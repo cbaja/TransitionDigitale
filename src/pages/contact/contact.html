@@ -1,0 +1,97 @@
+<ion-header no-border>
+  <ion-navbar color="primary">
+    <ion-title>
+      Budget
+    </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only  (tap)="presentActionSheet()">
+          <ion-icon name="options" ></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<div class="content_contact">
+    <table>
+      <tr>
+        <td>
+            <div class="images">
+              <img src="assets/images/graphheader.png"/>
+            </div>
+         </td>
+        <td> 
+          <div class="textImages"> 
+            Classement par Ministre
+          </div> 
+        </td>
+      </tr>
+    </table>    
+  </div>        
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="rouge" (tap)="goToDetailsMinistere()">
+         <ion-img class="centreImg" width="60" height="60" 
+          src="assets/images/mi/ministere_tourisme_2.jpg">
+         </ion-img>
+         <p> 
+           Ministre du Tourisme <br/> 
+        </p> 
+      </ion-col>
+
+      <ion-col  class="rouge" (tap)="goToDetailsMinistere()"> 
+        <ion-img class="centreImg" width="60" height="60" 
+          src="assets/images/mi/ministere_education_2.jpg">
+        </ion-img>
+        <p> Ministre de education <br/> 
+          <!--<ion-badge item-end> 7,025,654,588 Gourdes </ion-badge>-->  
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <!-- Colums 2-->
+    <ion-row>
+        <ion-col class="rouge" (tap)="goToDetailsMinistere()">
+            <ion-img class="centreImg" width="60" height="60" 
+             src="assets/images/mi/ministere_environement.jpg">
+            </ion-img>
+            <p> 
+              Ministre de l'environement <br/> 
+           </p> 
+         </ion-col>
+   
+         <ion-col  class="rouge" (tap)="goToDetailsMinistere()"> 
+           <ion-img class="centreImg" width="60" height="60" 
+             src="assets/images/mi/ministere_jeunesse.png">
+           </ion-img>
+           <p> Ministre de l'education <br/> 
+             <!--<ion-badge item-end> 7,025,654,588 Gourdes </ion-badge>-->  
+           </p>
+         </ion-col>
+    </ion-row>
+
+
+    <!-- Colums 3-->
+    <ion-row>
+        <ion-col class="rouge" (tap)="goToDetailsMinistere()">
+            <ion-img class="centreImg" width="60" height="60" 
+             src="assets/images/mi/ministere_social_travail.png">
+            </ion-img>
+            <p> 
+                ministre des Affaires Sociales et du Travail <br/> 
+           </p> 
+         </ion-col>
+   
+         <ion-col  class="rouge" (tap)="goToDetailsMinistere()"> 
+           <ion-img class="centreImg" width="60" height="60" 
+             src="assets/images/mi/ministere_agriculture_2.png">
+           </ion-img>
+           <p>  l`Agriculture, des Ressources Naturelles et du Développement Rural <br/> 
+             <!--<ion-badge item-end> 7,025,654,588 Gourdes </ion-badge>-->  
+           </p>
+         </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

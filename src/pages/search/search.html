@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Rechercher</ion-title>
+    <!--  
+      (ionInput)="onInput($event)"
+      (ionCancel)="onCancel($event)"-->
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+        <ion-searchbar
+        [(ngModel)]="myInput"
+        [showCancelButton]="shouldShowCancel">
+     </ion-searchbar>
+    <ion-list>
+        <ion-item  (tap)="seeProject()">
+            <h2>Recettes non fiscales</h2>
+            <p>1,884,308,819 Gourdes</p>
+        </ion-item>        
+    </ion-list>
+</ion-content>
