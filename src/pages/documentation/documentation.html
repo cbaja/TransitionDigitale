@@ -75,13 +75,14 @@
       </div>   
   
   <ion-list>
-      <ion-item *ngFor="let post of postList">
+      <ion-item  *ngFor="let post of postList">
         <ion-avatar item-left>
-            <img src="assets/images/doc.png"/>
-      </ion-avatar>
-      <h2>{{post.title}}</h2>
-      <p>{{post.body}}</p>
-    
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV2pCKwW-CiBqARkaU_3hlTr0YlCSyws2E0Ur6ufLLkmitYfH-">
+        </ion-avatar>
+        <h2>{{post.title}}</h2>
+        <p>{{post.body}}</p>
+        <button (tap)="showdetails(post)"> See </button>
+      
       </ion-item>
   </ion-list>
   </ion-content>

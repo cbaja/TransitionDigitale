@@ -42,6 +42,7 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "2.1.4",
+        "ionic": "3.12.0",
         "typescript": "2.3.4"
     },
     "description": "Application permet a la population de consulter le budget de la republique ",
