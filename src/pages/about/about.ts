@@ -8,9 +8,6 @@ import { NavController,NavParams } from 'ionic-angular';
 export class AboutPage {
   thePost :any;
   constructor(public navCtrl: NavController, public navParams :NavParams ) {
- 
    this.thePost=navParams.get("thePost");
-
   }
-
 }

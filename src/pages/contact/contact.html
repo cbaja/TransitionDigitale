@@ -23,7 +23,7 @@
          </td>
         <td> 
           <div class="textImages"> 
-            Classement par Ministre
+              Classement par entité de l'état
           </div> 
         </td>
       </tr>
@@ -31,67 +31,15 @@
   </div>        
 
   <ion-grid>
-    <ion-row>
-      <ion-col class="rouge" (tap)="goToDetailsMinistere()">
-         <ion-img class="centreImg" width="60" height="60" 
-          src="assets/images/mi/ministere_tourisme_2.jpg">
+    <ion-row >
+      <ion-col  *ngFor="let minis of ministere" class="rouge" (tap)="goToDetailsMinistere(minis)">
+         <ion-img class="centreImg" width="90" height="90" 
+          src="assets/images/mi/amoirie.jpg">
          </ion-img>
-         <p> 
-           Ministre du Tourisme <br/> 
+         <p>
+            {{minis.nom}}<br/> 
         </p> 
       </ion-col>
-
-      <ion-col  class="rouge" (tap)="goToDetailsMinistere()"> 
-        <ion-img class="centreImg" width="60" height="60" 
-          src="assets/images/mi/ministere_education_2.jpg">
-        </ion-img>
-        <p> Ministre de education <br/> 
-          <!--<ion-badge item-end> 7,025,654,588 Gourdes </ion-badge>-->  
-        </p>
-      </ion-col>
-    </ion-row>
-
-    <!-- Colums 2-->
-    <ion-row>
-        <ion-col class="rouge" (tap)="goToDetailsMinistere()">
-            <ion-img class="centreImg" width="60" height="60" 
-             src="assets/images/mi/ministere_environement.jpg">
-            </ion-img>
-            <p> 
-              Ministre de l'environement <br/> 
-           </p> 
-         </ion-col>
-   
-         <ion-col  class="rouge" (tap)="goToDetailsMinistere()"> 
-           <ion-img class="centreImg" width="60" height="60" 
-             src="assets/images/mi/ministere_jeunesse.png">
-           </ion-img>
-           <p> Ministre de l'education <br/> 
-             <!--<ion-badge item-end> 7,025,654,588 Gourdes </ion-badge>-->  
-           </p>
-         </ion-col>
-    </ion-row>
-
-
-    <!-- Colums 3-->
-    <ion-row>
-        <ion-col class="rouge" (tap)="goToDetailsMinistere()">
-            <ion-img class="centreImg" width="60" height="60" 
-             src="assets/images/mi/ministere_social_travail.png">
-            </ion-img>
-            <p> 
-                ministre des Affaires Sociales et du Travail <br/> 
-           </p> 
-         </ion-col>
-   
-         <ion-col  class="rouge" (tap)="goToDetailsMinistere()"> 
-           <ion-img class="centreImg" width="60" height="60" 
-             src="assets/images/mi/ministere_agriculture_2.png">
-           </ion-img>
-           <p>  l`Agriculture, des Ressources Naturelles et du Développement Rural <br/> 
-             <!--<ion-badge item-end> 7,025,654,588 Gourdes </ion-badge>-->  
-           </p>
-         </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

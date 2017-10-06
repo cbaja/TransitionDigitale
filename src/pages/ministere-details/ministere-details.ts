@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,NavParams } from 'ionic-angular';
 import { InvestirPage } from '../investir/investir';
 
 @Component({
@@ -8,13 +8,15 @@ import { InvestirPage } from '../investir/investir';
 })
 export class MinistereDetailsPage {
 
-  constructor(public navCtrl: NavController) {
+  detailsministere :any;
 
+  constructor(public navCtrl: NavController, public navParams :NavParams) {
+    this.detailsministere = navParams.get("detailsministere");
+    console.log(this.detailsministere)
   }
 
-   goToInvest(){
+  goToInvest(){
       this.navCtrl.push(InvestirPage);
   }
-
 
 }

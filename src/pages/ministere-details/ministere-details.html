@@ -1,7 +1,8 @@
 <ion-header no-border>
   <ion-navbar color="primary">
     <ion-title>
-      Budget | Ministre du tourisme
+      {{detailsministere.code}}
+      {{detailsministere.nom}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -12,21 +13,19 @@
           <tr>
             <td>
                 <div class="images">
-                  <img src="assets/images/mi/ministere_tourisme_2.jpg"/>
+                  <img src="assets/images/mi/amoirie.jpg"/>
                 </div>
              </td>
             <td> 
               <div class="textImages"> 
-                  Ministre du tourisme
+                    {{detailsministere.nom}} 
               </div> 
             </td>
           </tr>
         </table>
       <div class="textAbout" padding>
-          Haïti regorge de belles plages,
-          de belles cascades et de magnifiques grottes.
-          Le pays offre également un beau soleil tropical et 
-          de gantesques montagnes.
+         <h2>{{detailsministere.code}} </h2>
+         <p> {{detailsministere.nom}} <p>
         </div>
     </div>
 

@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController,AlertController } from 'ionic-angular';
+import { NavController,AlertController,LoadingController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import {PeopleServiceProvider} from '../../providers/people-service/people-service';
-// import { Http } from '@angular/http';
+import { Http ,Response} from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'page-documentation',
@@ -11,27 +15,54 @@ import {PeopleServiceProvider} from '../../providers/people-service/people-servi
 
 })
 export class DocumentationPage {
-  postList : any ;//= any;
-  constructor(public navCtrl: NavController,public alertCtrl: AlertController, //private http: Http, 
+  documentBudget : any ; //= any;
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, private http: Http,
+    public loadingCtrl: LoadingController,
     public peopleServiceProvider: PeopleServiceProvider) {
-    this.getPosts();
+    this.laodDocumentBudget(); 
+  }
+
+  showLoad() {
+    const loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    loading.present();
   }
   
-  getPosts(){
-    this.peopleServiceProvider.getPosts().subscribe((data)=>{
-        this.postList = data;
+  hideLoad() {
+    const loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    loading.dismiss();
+  }
+  
+  
+  laodDocumentBudget(){
+    this.http.get("http://haitibudget-env-1.max9ppfxgt.us-east-2.elasticbeanstalk.com/getLastBudget")
+    .map(res=>res.json())
+    .subscribe(res=>{
+      var myTable = [];
+      myTable.push(res);
+      this.documentBudget=myTable;
+      console.log(this.documentBudget);
+      this.hideLoad()
+    },(err) =>{
+      console.log(err);
+      this.showLoad();
     });
   }
   
   goToDocument(){
     this.navCtrl.push(AboutPage);
   }
-  showdetails(thePost){
 
-    //let index = this.postList.indexOf(thePost);
+  showdetails(thePost){
     this.navCtrl.push(AboutPage,{
       thePost:thePost
-    });
+  });
+
     //alert(thePost)
     /*
     let prompt = this.alertCtrl.create({
