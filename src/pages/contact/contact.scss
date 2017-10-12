@@ -1,5 +1,19 @@
 page-contact {
-    
+    .contentSpinner{
+        align-content: center;
+        text-align: center;
+    }
+    ion-spinner * {
+        width: 48px;
+        height: 48px;
+        ion-spinner * {
+            width: 28px;
+            height: 28px;
+            stroke: rgb(255, 0, 0);
+            fill: rgb(255, 0, 0);
+          }
+
+      }
     .rouge{
         box-shadow: 1px 0px 2px #ddd;
         text-align: center;
@@ -32,6 +46,19 @@ page-contact {
         -moz-box-shadow: -2px 2px 26px -8px rgba(0,0,0,0.75);
         box-shadow: -2px 2px 26px -8px rgba(0,0,0,0.75);
     }
+    .images{
+        width: 100px;
+        height:100px;
+        align-content: center;
+        text-align: center;
+        margin: auto;
+        img{
+            width: 100px;
+            height:100px;
+            
+        }
+    }
+
 
     .content_contact{
         box-shadow: 1px 0px 2px #ddd;

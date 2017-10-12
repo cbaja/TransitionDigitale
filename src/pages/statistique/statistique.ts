@@ -64,8 +64,8 @@ export class StatistiquePage {
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'top',
-            x: -140,
-            y: -80,
+            x: -10,
+            y: 80,
         
             floating: true,
             borderWidth: 1,
@@ -76,14 +76,14 @@ export class StatistiquePage {
         },
         series: [{
             name: 'Annee 2017 - 2018',
-            data: [7, 0.4, 6.3, 3, 1,3,3,5.6,2]
-        }/*, {
+            data: [7,4,3, 3, 1,3,3,5.6,2]
+        }, {
             name: 'Annee 2016 - 2017',
-            data: [100, 340, 647, 308, 222,344,444,45,33]
+            data: [13,3,7, 8, 2,4,5,6,3]
         }, {
             name: 'Annee 2017 - 2018',
-            data: [90, 440, 750, 440, 240,290,390,500,50]
-        }*/]
+            data: [9, 4, 7, 3, 2,2,3,5,4]
+        }]
 
       }
   }

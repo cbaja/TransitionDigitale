@@ -1,8 +1,8 @@
 <ion-header no-border>
   <ion-navbar color="primary">
     <ion-title>
-      {{detailsministere.code}}
-      {{detailsministere.nom}}
+      {{detailsministere.acronymeEntite}}
+      {{detailsministere.nomEntite}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -13,67 +13,80 @@
           <tr>
             <td>
                 <div class="images">
-                  <img src="assets/images/mi/amoirie.jpg"/>
+                  <img src="{{detailsministere.photoUrlEntite}}"/>
                 </div>
              </td>
             <td> 
               <div class="textImages"> 
-                    {{detailsministere.nom}} 
+                    {{detailsministere.nomEntite}} 
               </div> 
             </td>
           </tr>
         </table>
       <div class="textAbout" padding>
-         <h2>{{detailsministere.code}} </h2>
-         <p> {{detailsministere.nom}} <p>
+         <h2>{{detailsministere.montantEntite}} Gdes </h2>
+         <p> {{detailsministere.descritionEntite}} <p>
         </div>
     </div>
 
     <ion-list>
       <div class="titreListe"> Credit de fonctionement </div>
-      <ion-item>
-        <!--
-          <ion-avatar item-start>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV2pCKwW-CiBqARkaU_3hlTr0YlCSyws2E0Ur6ufLLkmitYfH-">
-          </ion-avatar>
-        -->
-          <h2> Dépenses personnels </h2>
-          <p>452,502,398 Gourdes</p>
+      <ion-item *ngFor="let dep of depense">
+          <h2> {{dep.libele_depense}}</h2>
+          <p>  {{dep.montant_depense}} Gdes </p>
       </ion-item>
+    </ion-list>
+
+    <ion-list>
+            <div class="titreListe"> Credit d'investissement </div>
+            <ion-item *ngFor="let inves of investissement">
+                <h2> {{inves.libele_investissement}}</h2>
+                <p>  {{inves.montant_investissement}} Gdes </p>
+            </ion-item>
+          </ion-list>
+
+</ion-content>
+
+<!-- 
       <ion-item>
           <h2> Dépenses de Biens et Services </h2>
-          <p> 1,059,537,702 Gourdes</p>
+          <p> {{detailsministere.depensesBienServices.montant}} Gdes</p>
       </ion-item>
       <ion-item>
           <h2> Dépenses d'Immobilisations</h2>
-          <p> 2,262,549,447 Gourdes</p>
+          <p> {{detailsministere.depensesImmobilisations.montant}} Gdes</p>
       </ion-item>
       <ion-item>
           <h2> Dépenses de Transferts</h2>
-          <p> 166,599,300 Gourdes</p>
+  
+          <p> {{detailsministere.depensesTransferts.montant}} Gdes</p>
       </ion-item>
       <ion-item>
           <h2>  Service de la Dette Publique</h2>
-          <p> --Gourdes</p>
+     
       </ion-item>
       <ion-item>
           <h2>  Autres dépenses publiques</h2>
-          <p> 380,724,863 Gourdes</p>
-      </ion-item>
-    
+          <p> {{detailsministere.depensesTransferts.montant}} Gdes</p>
+          
+      </ion-item>    
       <ion-item  (tap)="goToInvest()">
-          <h2> Opérations financières</h2>
-          <p> -- Gourdes</p>
+          <h2> Opérations financières</h2> 
+          <p> {{detailsministere.depensesAutre.montant}} Gdes</p>
       </ion-item>
+
+      <ion-item  (tap)="goToInvest()">
+        <h2> Projet  </h2> 
+       
+        <p> {{detailsministere.pro.name}} </p>
+        <p> {{detailsministere.pro.co.cout}} Gourdes</p>
+    </ion-item>
+      
 </ion-list>
 <ion-list>
     <div class="titreListe"> Credit d'investissement </div>
     <ion-item>
-      <!--
-        <ion-avatar item-start>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV2pCKwW-CiBqARkaU_3hlTr0YlCSyws2E0Ur6ufLLkmitYfH-">
-        </ion-avatar>
-      -->
+     
         <h2> Dépenses personnels </h2>
         <p>452,502,398 Gourdes</p>
     </ion-item>
@@ -91,7 +104,7 @@
     </ion-item>
     <ion-item>
         <h2>  Service de la Dette Publique</h2>
-        <p> --Gourdes</p>
+       
     </ion-item>
     <ion-item>
         <h2>  Autres dépenses publiques</h2>
@@ -100,10 +113,10 @@
   
     <ion-item  (tap)="goToInvest()">
         <h2> Opérations financières</h2>
-        <p> -- Gourdes</p>
+       
     </ion-item>
 </ion-list>
-<!--
+
 <ion-grid>
   <ion-row>
     <ion-col  class="rouge">
@@ -131,6 +144,3 @@
   </ion-row>
  </ion-grid>
 -->
-
-
-</ion-content>

@@ -28,18 +28,36 @@
         </td>
       </tr>
     </table>    
-  </div>        
+  </div>  
+  <div  *ngIf="showing" class="contentSpinner">    
+      <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+  <ion-refresher  (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Pull to refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+              
 
   <ion-grid>
     <ion-row >
       <ion-col  *ngFor="let minis of ministere" class="rouge" (tap)="goToDetailsMinistere(minis)">
-         <ion-img class="centreImg" width="90" height="90" 
-          src="assets/images/mi/amoirie.jpg">
-         </ion-img>
-         <p>
-            {{minis.nom}}<br/> 
-        </p> 
-      </ion-col>
+      
+          <div class="images">
+            <img src="{{minis.photoUrlEntite}}"/>
+          </div>
+           <h2> {{minis.acronymeEntite}} </h2>
+            <p> {{minis.nomEntite}} <br/></p>
+            <ion-badge item-end>  
+                <span id="currency-default"> 
+                  {{minis.montantEntite}} Gourdes
+                </span>
+            </ion-badge>  
+            </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+<!--  {{minis.montantEntite | currency}} Gourdes -->

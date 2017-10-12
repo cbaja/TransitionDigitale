@@ -1,12 +1,16 @@
 <ion-header no-border>
   <ion-navbar color="primary">
     <ion-title>
-      Territoire
+      Classement par departement
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <div class="content_territoire">
         <table>
           <tr>
@@ -23,51 +27,37 @@
           </tr>
         </table>    
     </div>  
+    <div  *ngIf="showing"  class="contentSpinner">    
+        <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                  pullingIcon="arrow-dropdown"
+                  pullingText="Pull to refresh"
+                  refreshingSpinner="circles"
+                  refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+                
 
-     <ion-card>
-      <img src="http://nech-cieh.org/wp-content/uploads/2014/05/srep00997-f2.jpg"/>
-      <ion-card-content>
-        <ion-card-title>
-          Pouvez voir le budget par deparmetemnet.
-          </ion-card-title>
-        <p> A chaque departement selectionner 
-          Departement du centre ... qui est chiffrée à 144 milliards de gourdes 
-        </p>
-      </ion-card-content>
-    </ion-card>
-     <chart [options]="chartOptions"  style="display:block" type="chart">
+    <ion-list>
+        <ion-item *ngFor="let depart of departement" (tap)= "sedprojetbydepatement(depart)">
+            <ion-avatar item-start>
+              <img src="{{depart.photoCartographie}}">
+            </ion-avatar>
+            <h2>{{depart.libelle_cartographie}}</h2>
+            <p> {{depart.montant_cartographie}}Gdes</p>    
+        </ion-item>
+    </ion-list>
 
-  </chart>
+
     
+  
     <!--
-    <ion-card>
-        <ion-card-header>
-          Bar Chart
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #barCanvas></canvas>
-        </ion-card-content>
-      </ion-card>
-   
-      <ion-card>
-        <ion-card-header>
-          Doughnut Chart
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #doughnutCanvas></canvas>
-        </ion-card-content>
-      </ion-card>
-   
-      <ion-card>
-        <ion-card-header>
-          Line Chart
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #lineCanvas></canvas>
-        </ion-card-content>
-      </ion-card>
+      <button id="x" (tap)="changeColor()">Click Me! Jquery</button>
+
+      <button ion-button (click)="openWithSystemBrowser('https://www.techiediaries.com')">Open with System browser</button>
+      <button ion-button (click)="openWithInAppBrowser('https://www.techiediaries.com')">Open with In App browser</button>
+      <button ion-button (click)="openWithCordovaBrowser('https://www.techiediaries.com')">Open with Cordova browser</button>
     -->
-    <chart [options]="chartOptions"  style="display:block" type="chart">
-      
-        </chart>
 </ion-content>

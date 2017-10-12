@@ -1,47 +1,22 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-        Haïti-Budget-Collectivités territoriales:
+       {{detailsArticles.titre}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-card (tap)="goToDetails()">
+  <ion-card>
   
-    <img src="http://hpnhaiti.com/nouvelles/images/AABMAIRE.jpg"/>
+    <img src="{{detailsArticles.photoUrl}}"/>
+    
     <ion-card-content>
       <ion-card-title>
-       Haïti-Budget-Collectivités territoriales: Les maires du Sud entretenus sur leurs rôles et le Budget national
+        {{detailsArticles.titre}}
         </ion-card-title>
       <p>
-          <b>
-             Renforcer la transparence dans le processus budgétaire haïtien », tel est le thème autour duquel l’économiste Kesner Pharel s’est entretenu avec l’Association des maires du Sud (AMSUD), le jeudi 27 juillet, dans la ville des Cayes. Une activité tenue en prélude à un colloque international ayant pour thème central : « Université et développement des collectivités territoriales durable » qui se déroule du 27 au 30 du même mois, constate sur place HPN.
-          </b>
-            <br/>
-          
-            Ce colloque est accueilli par l’Université publique du Sud aux Cayes. Il s’agit d’une initiative soucieuse des Universités publiques en région (UPR) qui fonctionnent sous la tutelle du ministère de l’Éducation nationale et de la Formation professionnelle (MENFP).
-
-En effet, ils sont environ une vingtaine de maires venus de différentes communes du département du Sud à avoir pris part à cette rencontre pré-colloque où la question du Budget national 2017-2018 a été la plaque tournante autour de laquelle se sont enchaînées les discussions avec beaucoup de données chiffrées relatives aux collectivités territoriales.
-
-
-
-Définition d’un budget, ses principales caractéristiques, sa structuration, sa préparation, son vote et nombre de loi de finances sont entre autres, les principaux points abordés par le président du Groupe croissance, Kesner Pharel avec les édiles du Sud. M. Pharel leur a montré avec brio la nécessité du budget dans le développement d’un pays avec notamment, souligne-t-il, le soutien technique et politique des représentants des collectivités du territoire.
-
-Selon Kesner Pharel, 25 % de la population haïtienne vivent dans une situation d’extrême pauvreté et 60% dans la pauvreté. L’espérance de vie est actuellement 63 ans en Haïti. Alors qu’en République dominicaine, l’espérance de vie et de 73 ans. Le revenu per capita haïtien, ajoute-t-il, est évalué à 810 dollars américains l’an.  
-
-Ces magistrats communaux qui se montrent très enthousiastes d’être informés d’un ensemble de données chiffrées concernant leur commune respective ont jugé très importants et utiles ces échanges qui, ajoutent-ils, vont désormais leur permettre d’assurer une plus meilleure gestion de leur espace.
-<br/>
-<b>
-  <!-- Commentaire using git -->
-Alix Laroche <br/>
-
-alix.l@hpnhaiti.com <br/>
-
-
-Photo : Sadrac Théodore     
-</b>
-
+         {{detailsArticles.description}}
       </p>
     </ion-card-content>
     </ion-card>

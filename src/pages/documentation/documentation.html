@@ -21,11 +21,23 @@
           </tr>
         </table>    
       </div>   
+      <div *ngIf="showing" class="contentSpinner">
+            <ion-spinner name="bubbles"></ion-spinner>
+      </div>
+         
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content
+                  pullingIcon="arrow-dropdown"
+                  pullingText="Pull to refresh"
+                  refreshingSpinner="circles"
+                  refreshingText="Refreshing...">
+          </ion-refresher-content>
+        </ion-refresher>
   
   <ion-list>
       <ion-item  *ngFor="let doc of documentBudget">
         <ion-avatar item-left>
-          <img src="assets/images/mi/pdf.png"/>
+          <img src="assets/images/pdf.png"/>
         </ion-avatar>
         <h2>{{doc.titre}}</h2>
         <p>{{doc.typeBudget}}</p>

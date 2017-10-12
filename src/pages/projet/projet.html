@@ -1,51 +1,46 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Projet
+      Projet 
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  
-    
-<ion-card (tap)="goToDetailsProjet()">
+  <!-- 
+    id_projet": "1",
+    "libele_projet": "Construction 90 km de route ville geremie ",
+    "montant": "5000000",
+    "photoProjet": "urlPhotoProjet",
+    "porteProjet": "Departementale",
+    "id_sources": "2",
+    "montantSources": "50000000",
+    "libelleSources": "TResor publique",
+    "projet": "1"
+    photoUrlEntite
+  -->
+  <div  *ngIf="showing" class="contentSpinner">    
+      <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                  pullingIcon="arrow-dropdown"
+                  pullingText="Pull to refresh"
+                  refreshingSpinner="circles"
+                  refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+                
+
+<ion-list *ngFor="let pro of projet"   (tap)="goToDetailsProjet()" >
 
     <ion-item>
-        <ion-avatar item-start>
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV2pCKwW-CiBqARkaU_3hlTr0YlCSyws2E0Ur6ufLLkmitYfH-">
+       <ion-avatar item-start>
+              <img src="{{pro.photoUrlEntite}}">
         </ion-avatar>
-        <h2>CONSTRUCTION DU MARCHE PUBLIC DE FONTAMARA</h2>
-        <p>65,000,000 Gourdes</p>
-    </ion-item>
+       <h1>{{pro.libele_projet}}</h1>
+        <p> {{pro.montant}} Gdes</p>    
+    </ion-item> 
 
-  <img src="http://www.radiotelevisioncaraibes.com/files.php?file=newsphoto/aeroport_port_au_prince_511900230.jpg">
-
-  <ion-card-content>
-    <p>CONSTRUCTION DU MARCHE PUBLIC DE FONTAMARA 
-      Are you telling me that you built a time machine... 
-      out of a DeLorean?! Whoa. This is heavy.</p>
-  </ion-card-content>
-
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>PETROCARIBE</div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div>EMPRUNT</div>
-      </button>
-    </ion-col>
-    <ion-col center text-center>
-      <ion-note>
-        11h ago
-      </ion-note>
-    </ion-col>
-  </ion-row>
-
-</ion-card>
+</ion-list>
 </ion-content>

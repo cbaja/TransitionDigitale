@@ -1,0 +1,122 @@
+
+/** Ce que je dois fais{
+  "list": [
+    {
+      "id": 12,
+      "code": "PN",
+      "nom": "Palais National",
+      "depenses": [
+        
+      ],
+      "parent": null
+    },
+    {
+      "id": 13,
+      "code": "ME",
+      "nom": "Ministère de l'environnement",
+      "depenses": [
+        {
+          "id": 57,
+          "description": "Dépenses de Personnel",
+          "montantTotal": 3.14722352E8,
+          "typeDepense": "FONCTIONNEMENT",
+          "titreDepense": "DEPENSES_DE_PERSONNEL"
+        },
+        {
+          "id": 58,
+          "description": "Dépenses de Biens et Services",
+          "montantTotal": 8.21954E7,
+          "typeDepense": "FONCTIONNEMENT",
+          "titreDepense": "DEPENSES_DE_BIENS_ET_SERVICES"
+        },
+        {
+          "id": 59,
+          "description": "Dépenses d'Immobilisations",
+          "montantTotal": 1.3048844E7,
+          "typeDepense": "FONCTIONNEMENT",
+          "titreDepense": "DEPENSES_D_IMMOBILISATIONS"
+        }
+    ]}
+    ]
+}
+
+{
+  "tweet": {
+    "created_at": "Thu Apr 06 15:24:15 +0000 2017",
+    "id_str": "850006245121695744",
+    "text": "1\/ Today we\u2019re sharing our vision for the future of the Twitter API platform!\nhttps:\/\/t.co\/XweGngmxlP",
+    "user": {
+      "id": 2244994945,
+      "name": "Twitter Dev",
+      "screen_name": "TwitterDev",
+      "location": "Internet",
+      "url": "https:\/\/dev.twitter.com\/",
+      "description": "Your official source for Twitter Platform news, updates & events. Need technical help? Visit https:\/\/twittercommunity.com\/ \u2328\ufe0f #TapIntoTwitter"
+    },
+    "place": {
+      
+    },
+    "entities": {
+      "hashtags": [
+        
+      ],
+      "urls": [
+        {
+          "url": "https:\/\/t.co\/XweGngmxlP",
+          "unwound": {
+            "url": "https:\/\/cards.twitter.com\/cards\/18ce53wgo4h\/3xo1c",
+            "title": "Building the Future of the Twitter API Platform"
+          }
+        }
+      ],
+      "user_mentions": [
+        
+      ]
+    }
+  }
+ **/
+{
+    "list": [
+      {
+        "id": 12,
+        "code": "PN",
+        "nom": "Palais National",
+        "depenses": [
+          
+        ],
+        "parent": null
+      },
+      {
+        "id": 13,
+        "code": "ME",
+        "nom": "Ministère de l'environnement",
+        "depensesPersonnele": [
+          {
+            "id": 57,
+            "description": "Dépenses de Personnel",
+            "montantTotal": 3.14722352E8,
+            "typeDepense": "FONCTIONNEMENT",
+            "titreDepense": "DEPENSES_DE_PERSONNEL"
+          }
+        ],
+        "depenseBienEtServices":[
+          {
+            "id": 58,
+            "description": "Dépenses de Biens et Services",
+            "montantTotal": 8.21954E7,
+            "typeDepense": "FONCTIONNEMENT",
+            "titreDepense": "DEPENSES_DE_BIENS_ET_SERVICES"
+          }
+        ],
+        "depensesImobilier":[
+          {
+            "id": 59,
+            "description": "Dépenses d'Immobilisations",
+            "montantTotal": 1.3048844E7,
+            "typeDepense": "FONCTIONNEMENT",
+            "titreDepense": "DEPENSES_D_IMMOBILISATIONS"
+          }
+      ]}
+      ]
+  }
+  

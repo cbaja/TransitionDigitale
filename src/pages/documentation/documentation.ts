@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController,AlertController,LoadingController } from 'ionic-angular';
 import { AboutPage } from '../about/about';
 import {PeopleServiceProvider} from '../../providers/people-service/people-service';
-import { Http ,Response} from '@angular/http';
+import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -21,7 +21,15 @@ export class DocumentationPage {
     public peopleServiceProvider: PeopleServiceProvider) {
     this.laodDocumentBudget(); 
   }
-
+  showAlertNoConnexion() {
+    let alert = this.alertCtrl.create({
+      title: 'Information!',
+      subTitle: 'Vérifiez votre connexion internet!',
+      buttons: ['OK']
+    });
+    alert.present();
+    //this.showLoad();
+  }
   showLoad() {
     const loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -38,6 +46,7 @@ export class DocumentationPage {
     loading.dismiss();
   }
   
+  public showing = true;
   
   laodDocumentBudget(){
     this.http.get("http://haitibudget-env-1.max9ppfxgt.us-east-2.elasticbeanstalk.com/getLastBudget")
@@ -48,12 +57,25 @@ export class DocumentationPage {
       this.documentBudget=myTable;
       console.log(this.documentBudget);
       this.hideLoad()
+  
+      this.showing = !this.showing;
     },(err) =>{
       console.log(err);
-      this.showLoad();
+      // alert(err)
+      this.showAlertNoConnexion();
     });
   }
-  
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.laodDocumentBudget();
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
   goToDocument(){
     this.navCtrl.push(AboutPage);
   }

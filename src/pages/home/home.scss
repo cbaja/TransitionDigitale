@@ -1,3 +1,42 @@
 page-home {
+    .contentSpinner{
+        align-content: center;
+        text-align: center;
+    }
+    ion-spinner * {
+        width: 48px;
+        height: 48px;
+        ion-spinner * {
+            width: 28px;
+            height: 28px;
+            stroke: #444;
+            fill: #222;
+          }
 
+      }
+    ion-avatar{
+        background: 'red';
+    }
+    .titre{
+        font-size: 1.2em;
+        color: #777;
+        margin:8px;
+    }
+    .imgages{
+        margin: 16px;
+        width: 120px;
+        
+        img{
+            width: 120px;
+            
+        }
+    }
+    ion-navbar{
+        -webkit-box-shadow: -2px 2px 26px -8px rgba(0,0,0,0.75);
+        -moz-box-shadow: -2px 2px 26px -8px rgba(0,0,0,0.75);
+        box-shadow: -2px 2px 26px -8px rgba(0,0,0,0.75);
+    }
+
+    
+    
 }

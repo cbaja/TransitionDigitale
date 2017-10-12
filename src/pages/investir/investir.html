@@ -1,53 +1,34 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>
-      Investissement
+      Cartographie haiti
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-    
-  <ion-grid>
-    <ion-row>
-      <ion-col  class="rouge">
+ 
+   <div class="content_contact">
+        <table>
+          <tr>
+            <td>
+                <div class="images">
+                  <img src="assets/images/globe.png"/>
+                </div>
+             </td>
+            <td> 
+              <div class="textImages"> 
+                Cartographie haiti
+              </div> 
+            </td>
+          </tr>
+        </table>    
+      </div>   
 
-          <ion-img class="centreImg" width="80" height="80" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV2pCKwW-CiBqARkaU_3hlTr0YlCSyws2E0Ur6ufLLkmitYfH-"></ion-img>
-         <p> 
-            Ministre de la Planification et de la Coopération Externe <br/>
-        
-            <ion-badge item-end>4,321,913,710 Gourdes  </ion-badge>  
-        </p> 
-    
-       </ion-col>
-      </ion-row>
-  </ion-grid>
-
-  <ion-card>
-  <ion-list>
-      <ion-item  (tap)="seeProject()">
-          <ion-avatar item-start>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV2pCKwW-CiBqARkaU_3hlTr0YlCSyws2E0Ur6ufLLkmitYfH-">
-          </ion-avatar>
-          <h2>CONSTRUCTION DU MARCHE PUBLIC DE FONTAMARA</h2>
-          <p>65,000,000 Gourdes</p>
-      </ion-item>
-      <ion-item  (tap)="seeProject()">
-          <ion-avatar item-start>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV2pCKwW-CiBqARkaU_3hlTr0YlCSyws2E0Ur6ufLLkmitYfH-">
-          </ion-avatar>
-          <h2> CONSTRUCTION DU COMPLEXE ADMINISTRATIF DES GONAIVES </h2>
-          <p> 50,000,000 Gourdes</p>
-      </ion-item>
-      <ion-item  (tap)="seeProject()">
-          <ion-avatar item-start>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV2pCKwW-CiBqARkaU_3hlTr0YlCSyws2E0Ur6ufLLkmitYfH-">
-          </ion-avatar>
-          <h2> CONSTRUCTION MARCHES PUBLIC ET DE LA GARE ROUTIERE DE MIRAGOANE </h2>
-          <p> 20,000,000 Gourdes</p>
-      </ion-item>
-    
-  </ion-list>
-</ion-card>
+    <div class="map" (tap)="gotoTerrtoire()">
+      <div class="images">
+        <img src="assets/images/haitimap.png" width="100%" height="100%"/>
+    </div>
+  </div>  
 
 </ion-content>

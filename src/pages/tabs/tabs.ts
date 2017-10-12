@@ -7,6 +7,9 @@ import { StatistiquePage } from '../statistique/statistique';
 
 
 import{DocumentationPage} from '../documentation/documentation';
+
+import{InvestirPage} from '../investir/investir';
+
 /*
 import{SourcesFinancementPage} from '../sources-financement/sources-financement';
 */
@@ -20,7 +23,7 @@ export class TabsPage {
   /*tab3Root = SourcesFinancementPage;
   tab4Root = DocumentationPage;*/ 
   tab3Root = ContactPage;
-  tab4Root = TerritoirePage;
+  tab4Root = InvestirPage //TerritoirePage;
   tab5Root = DocumentationPage;
 
   

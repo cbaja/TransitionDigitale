@@ -26,6 +26,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ChartModule } from 'angular2-highcharts';
 import * as highcharts from 'Highcharts';
+import { AmChartsModule } from "@amcharts/amcharts3-angular";
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
 @NgModule({
@@ -48,7 +50,7 @@ import { PeopleServiceProvider } from '../providers/people-service/people-servic
     
   ],
   imports: [
-    BrowserModule,HttpModule,
+    BrowserModule,HttpModule,AmChartsModule,
     IonicModule.forRoot(MyApp),ChartModule.forRoot(highcharts)
   ],
   bootstrap: [IonicApp],
@@ -72,7 +74,7 @@ import { PeopleServiceProvider } from '../providers/people-service/people-servic
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen,InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PeopleServiceProvider
   ]
