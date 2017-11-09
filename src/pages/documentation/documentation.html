@@ -27,28 +27,28 @@
          
       <ion-refresher (ionRefresh)="doRefresh($event)">
           <ion-refresher-content
-                  pullingIcon="arrow-dropdown"
-                  pullingText="Pull to refresh"
-                  refreshingSpinner="circles"
-                  refreshingText="Refreshing...">
+              pullingIcon="arrow-dropdown"
+              pullingText="Pull to refresh"
+              refreshingSpinner="circles"
+              refreshingText="">
           </ion-refresher-content>
         </ion-refresher>
-  
+      
   <ion-list>
       <ion-item  *ngFor="let doc of documentBudget">
         <ion-avatar item-left>
           <img src="assets/images/pdf.png"/>
         </ion-avatar>
-        <h2>{{doc.titre}}</h2>
-        <p>{{doc.typeBudget}}</p>
-        <button ion-button icon-left clear small>
+        <h2>{{doc.description}}</h2>
+    
+        <button ion-button icon-left clear small (tap)="openUrl(doc.lien)">
           <ion-icon name="download">
-            <a href="http://www.mef.gouv.ht/docs/17_18_projet_de_loi_de_finances.pdf">
+            <a href="http://websitedemo.biz/hbws/img/uploads/{{doc.lien}}">
               Télécharger
             </a>
           </ion-icon>
         </button>
-        <!--<button (tap)="showdetails(post)"> See </button>-->
+        <!-- <button (tap)="showdetails(post)"> See </button>-->
       </ion-item>
   </ion-list>
   </ion-content>

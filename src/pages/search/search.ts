@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController} from 'ionic-angular';
 import { ProjetPage } from '../projet/projet';
 
 
@@ -10,11 +10,13 @@ import { ProjetPage } from '../projet/projet';
 })
 export class SearchPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController , public viewCtrl: ViewController) {
 
   }
-  private seeProject(){
+  seeProject(){
     this.navCtrl.push(ProjetPage);
   }
-  
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 }

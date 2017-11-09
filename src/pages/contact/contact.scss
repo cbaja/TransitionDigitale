@@ -1,28 +1,56 @@
 page-contact {
-    .contentSpinner{
-        align-content: center;
-        text-align: center;
-    }
-    ion-spinner * {
-        width: 48px;
-        height: 48px;
-        ion-spinner * {
-            width: 28px;
-            height: 28px;
-            stroke: rgb(255, 0, 0);
-            fill: rgb(255, 0, 0);
-          }
-
-      }
     .rouge{
-        box-shadow: 1px 0px 2px #ddd;
-        text-align: center;
+        border-bottom: 1px solid #ddd;
+        //border-right: 1px solid #ddd;
         padding: 16px;
-    }
+        display: block;
+        text-align: center;
+
+            .content_item{
+                margin: auto;
+                text-align: center;
+                position: relative;
+                height: auto;
+                padding: 20px;
+                width: 100%;
+            }
+    
+            h2{
+                width: auto;
+                margin: auto;
+                color: #666;
+            }
+
+            p{
+                width: 70%;
+                margin: auto;
+                color: #666;
+                margin-top: 5px;  
+            }
+            ion-badge{
+                margin-top: 10px;
+            }
+        }
+
+        .contentSpinner{
+            align-content: center;
+            text-align: center;
+        }
+
+        ion-spinner * {
+            width: 48px;
+            height: 48px;
+            ion-spinner * {
+                width: 28px;
+                height: 28px;
+                stroke: rgb(255, 0, 0);
+                fill: rgb(255, 0, 0);
+            }
+        }
+
+   
     .centreImg{
-       
         margin-top:2%;
-     
     }
 
     ion-slides{
@@ -33,7 +61,8 @@ page-contact {
         padding: 0;
         margin: 0;
     }
-     ion-slides img{
+
+    ion-slides img{
         height:400px;
         width: 100%;
     }
@@ -47,18 +76,16 @@ page-contact {
         box-shadow: -2px 2px 26px -8px rgba(0,0,0,0.75);
     }
     .images{
-        width: 100px;
-        height:100px;
+        width: 80px;
+        height:80px;
         align-content: center;
         text-align: center;
         margin: auto;
         img{
-            width: 100px;
-            height:100px;
-            
+            width: 80px; 
         }
     }
-
+    
 
     .content_contact{
         box-shadow: 1px 0px 2px #ddd;

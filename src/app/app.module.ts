@@ -18,6 +18,8 @@ import { SearchPage } from '../pages/search/search';
 import { DetailsProjetPage } from '../pages/details-projet/details-projet';
 
 import { DocumentationPage } from '../pages/documentation/documentation'; 
+import { SecteurPage } from '../pages/secteur/secteur'; 
+
 
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -30,6 +32,8 @@ import { AmChartsModule } from "@amcharts/amcharts3-angular";
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { entiteBySecteur } from '../pages/entiteBySecteur/entiteBySecteur'; 
 @NgModule({
   declarations: [
     MyApp,
@@ -46,7 +50,8 @@ import { PeopleServiceProvider } from '../providers/people-service/people-servic
     SearchPage,
     SourcesFinancementPage,
     DocumentationPage,
-    
+    SecteurPage,
+    entiteBySecteur,
     
   ],
   imports: [
@@ -69,12 +74,13 @@ import { PeopleServiceProvider } from '../providers/people-service/people-servic
     StatistiquePage,
     SourcesFinancementPage,
     DocumentationPage,
-  
+    SecteurPage,
+    entiteBySecteur,
     
   ],
   providers: [
     StatusBar,
-    SplashScreen,InAppBrowser,
+    SplashScreen,InAppBrowser,SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PeopleServiceProvider
   ]

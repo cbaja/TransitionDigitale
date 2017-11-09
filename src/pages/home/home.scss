@@ -3,6 +3,14 @@ page-home {
         align-content: center;
         text-align: center;
     }
+    .cutText{
+        height: 94px;
+        display:block;
+        overflow: hidden;
+        position: relative;
+        color: rgb(69, 62, 62);
+    }
+    
     ion-spinner * {
         width: 48px;
         height: 48px;
@@ -37,6 +45,5 @@ page-home {
         box-shadow: -2px 2px 26px -8px rgba(0,0,0,0.75);
     }
 
-    
-    
+   
 }

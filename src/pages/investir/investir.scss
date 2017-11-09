@@ -1,4 +1,6 @@
 page-investir {
+    
+    
     .content_contact{
         box-shadow: 1px 0px 2px #ddd;
         text-align: center;
@@ -46,6 +48,86 @@ page-investir {
          ion-slides img{
             height:400px;
             width: 100%;
+        }
+        #chartdiv{
+            width: auto;
+            height: 2000px;
+            border: 1px solid red;
+            display: none;
+          
+            .nouest{
+            
+                border: 1px solid red;
+                margin-left: 10%;
+                position: absolute;
+            }
+            .no{
+                width:auto;
+                border: 1px solid red;
+           
+                position: absolute;
+                margin-left: 37.5%;
+                margin-top: 9.8%;
+            }
+            .noest{
+
+                border: 1px solid red;
+
+                position: absolute;
+                margin-left: 51%;
+                margin-top: 14.5%;
+               
+            }
+            .artibo{
+               width: 62%;
+                border: 1px solid red;
+                position: absolute;
+                margin-left: 13.4%;
+                margin-top: 10%;
+            }
+            .centre{
+                width: 62%;
+                border: 1px solid red;
+                position: absolute;
+                margin-left: 38%;
+                margin-top: 22.9%;
+                opacity: 0.8;
+            }
+            .ouest{
+                width: 75%;
+                border: 1px solid red;
+                position: absolute;
+                margin-left: 12.2%;
+                margin-top: 32.3%;
+ 
+            }
+        
+            .sudest{
+                width: 75%;
+                border: 1px solid red;
+                position: absolute;
+                margin-left: 17.5%;
+                margin-top: 49.4%;
+            }
+            .sud{
+                width: 60%;
+                border: 1px solid red;
+                position: absolute;
+                margin-left: -23%;
+                margin-top: 56.5%;
+            
+            }
+
+            .nippes{
+              
+                width: 60%;
+                border: 1px solid red;
+                position: absolute;
+                margin-left: -15%;
+                margin-top: 49.5%;
+            }
+          
+            
         }
 
     }

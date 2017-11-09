@@ -3,13 +3,14 @@ import { NavController,LoadingController ,AlertController} from 'ionic-angular';
 
 
 import { AboutPage } from '../about/about';
-import { SearchPage } from '../search/search';
+// import { SearchPage } from '../search/search';
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
+
+import { ModalController } from 'ionic-angular';
 
 
 @Component({
@@ -19,28 +20,11 @@ import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser
 export class HomePage {
 
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
-    private theInAppBrowser: InAppBrowser,
+    public modalCtrl: ModalController,
     public http: Http,public alertCtrl: AlertController) {
     this.laodArticles(); 
   }
 
-  options : InAppBrowserOptions = {
-    location : 'yes',//Or 'no' 
-    hidden : 'no', //Or  'yes'
-    clearcache : 'yes',
-    clearsessioncache : 'yes',
-    zoom : 'yes',//Android only ,shows browser zoom controls 
-    hardwareback : 'yes',
-    mediaPlaybackRequiresUserAction : 'no',
-    shouldPauseOnSuspend : 'no', //Android only 
-    closebuttoncaption : 'Close', //iOS only
-    disallowoverscroll : 'no', //iOS only 
-    toolbar : 'yes', //iOS only 
-    enableViewportScale : 'no', //iOS only 
-    allowInlineMediaPlayback : 'no',//iOS only 
-    presentationstyle : 'pagesheet',//iOS only 
-    fullscreen : 'yes',//Windows only    
-};
 
   articles:any;
   showLoad() {
@@ -70,8 +54,8 @@ export class HomePage {
   public showing = true;
   //http://haitibudget-env-1.max9ppfxgt.us-east-2.elasticbeanstalk.com/getAllEntiteAdministrativeWithDepense
   laodArticles(){
-    this.http.get("http://cristalhotelhaiti.com/api/articles.php")
-//this.http.get("http://127.0.0.1/dashboard/api/articles.php")
+  this.http.get("http://websitedemo.biz/hbws/api/articles.php")
+  //this.http.get("http://127.0.0.1/dashboard/api/articles.php")
  
     .map(res=>res.json()) 
     .subscribe(res=>{
@@ -94,31 +78,13 @@ export class HomePage {
    });
   }
 
-  
-
-
-  openUrl( url:string){
-    let target = "_self";
-    
-    this.theInAppBrowser.create(url,target,this.options);
-  }
-  /*
-  public openWithSystemBrowser(url : string){
-    let target = "_system";
-    this.theInAppBrowser.create(url,target,this.options);
-}
-public openWithInAppBrowser(url : string){
-    let target = "_blank";
-    this.theInAppBrowser.create(url,target,this.options);
-}
-public openWithCordovaBrowser(url : string){
-    let target = "_self";
-    this.theInAppBrowser.create(url,target,this.options);
-}  */
-
+/*
   goToSearch(){
-    this.navCtrl.push(SearchPage);
+    //this.navCtrl.push(SearchPage);
+    let modal = this.modalCtrl.create(SearchPage);
+    modal.present();
   }
+  */
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.laodArticles();
@@ -130,3 +96,9 @@ public openWithCordovaBrowser(url : string){
   }
   
 }
+
+/*
+  com.compu.haitibudget
+  0.0.1
+  0.0.1
+ */

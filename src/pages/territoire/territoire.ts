@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController,LoadingController ,AlertController,NavParams } from 'ionic-angular';
+import { NavController,LoadingController ,AlertController } from 'ionic-angular';
 
 import { ProjetPage } from '../projet/projet';
 // import { Chart } from 'chart.js';
 // import * as HighCharts from 'highcharts';
-import { AmChartsService, AmChart } from "@amcharts/amcharts3-angular";
+// import { AmChartsService, /*AmChart*/ } from "@amcharts/amcharts3-angular";
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -12,14 +12,14 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import * as $ from 'jquery'
+//import * as $ from 'jquery'
 @Component({
   selector: 'page-territoire',
   templateUrl: 'territoire.html'
   
 })
 export class TerritoirePage {
-  private chart: AmChart;
+  //private chart: AmChart;
 
   options : InAppBrowserOptions = {
     location : 'yes',//Or 'no' 
@@ -40,10 +40,11 @@ export class TerritoirePage {
 };
 
   constructor(public navCtrl: NavController,
-    private AmCharts: AmChartsService,
+    //private AmCharts: AmChartsService,
     public http:Http, public alertCtrl: AlertController, public loadingCtrl: LoadingController,
     private theInAppBrowser: InAppBrowser) {
       this.loadBudgetDepartement();
+     
       
   }
  onViewLoad(){
@@ -63,29 +64,16 @@ export class TerritoirePage {
       this.theInAppBrowser.create(url,target,this.options);
   }  
   
-  sedprojetbydepatement(projetdepartement){
-  
-  
-  if(projetdepartement.id_cartographie==3){
-      this.navCtrl.push(ProjetPage,{
-       projetdepartement:projetdepartement
-      });
-    }else{
-    
-    let alert = this.alertCtrl.create({
-      title: 'Information!',
-      subTitle: 'Pas de projet !!!',
-      buttons: ['OK']
-    });
-    alert.present();
-    //this.showLoad();
-  
-    }
-  }
-
+/*
   changeColor(){
-    $('#x').text('beautifullll');
+
+    $('.bar').css({
+        "background":"#000",
+        'text-color':'red'
+    }, alert("ok hu"));
+
   }
+  */
   showLoad() {
     const loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -128,7 +116,7 @@ export class TerritoirePage {
 
   loadBudgetDepartement(){
     //this.http.get("http://127.0.0.1/dashboard/fichier.json")
-    this.http.get("http://cristalhotelhaiti.com/api/cartographieBudget.php")
+    this.http.get("http://websitedemo.biz/hbws/api/cartographieBudget.php")
     //this.http.get("http://127.0.0.1/dashboard/api/cartographieBudget.php")
     .map(res=>res.json()) //JSON.parse(data)
     .subscribe(res=>{
@@ -141,6 +129,12 @@ export class TerritoirePage {
       console.log(err);
       this.showAlertNoConnexion();
     });
+  }
+  sedprojetbydepatement(projetdepartement){
+    this.navCtrl.push(ProjetPage,{
+      projetdepartement:projetdepartement
+     });
+
   }
 
 }

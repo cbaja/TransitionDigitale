@@ -8,25 +8,29 @@
 
 <ion-content>
   <ion-card>
-  
     <img src="{{detailsArticles.photoUrl}}"/>
-    
     <ion-card-content>
       <ion-card-title>
         {{detailsArticles.titre}}
         </ion-card-title>
       <p>
-         {{detailsArticles.description}}
+        {{detailsArticles.description}}
       </p>
     </ion-card-content>
     </ion-card>
-    <ion-fab bottom right padding>
-        <button ion-fab><ion-icon name="share"></ion-icon></button>
-        <ion-fab-list side="top">
-          <button ion-fab> <ion-icon name="logo-twitter" ></ion-icon></button>
-          <button ion-fab> <ion-icon name="logo-facebook"></ion-icon> </button>
-          <button ion-fab> <ion-icon name="logo-instagram"></ion-icon> </button>
+    <ion-fab bottom right padding >
+        <button ion-fab>
+          <ion-icon name="share" >
+            </ion-icon>
+          </button>
+        
+          <ion-fab-list side="top">
+          <button ion-fab (tap)="whatsappShare(detailsArticles.description)"> <ion-icon name="logo-whatsapp" ></ion-icon></button>
+          <button ion-fab (tap)="twitterShare(detailsArticles.description)" > <ion-icon name="logo-twitter" ></ion-icon></button>
+          <button ion-fab (tap)="facebookShare(detailsArticles.description)"  > <ion-icon name="logo-facebook" ></ion-icon> </button>
+          <button ion-fab (tap)="otherShare(detailsArticles.description)"> <ion-icon name="logo-instagram"   ></ion-icon> </button>
         </ion-fab-list>
+    
 
       </ion-fab>
 

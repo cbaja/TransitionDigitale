@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController,ActionSheetController,LoadingController ,AlertController} from 'ionic-angular';
+import { NavController,ActionSheetController,LoadingController ,AlertController,NavParams} from 'ionic-angular';
 import { MinistereDetailsPage } from '../ministere-details/ministere-details';
 import { TerritoirePage } from '../territoire/territoire';
-import { StatistiquePage } from '../statistique/statistique';
+//import { StatistiquePage } from '../statistique/statistique';
 import { ProjetPage } from '../projet/projet';
+import { SecteurPage } from '../secteur/secteur';
+import { SourcesFinancementPage } from '../sources-financement/sources-financement';
+
 
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -17,9 +20,11 @@ import 'rxjs/add/operator/catch';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
+  ministereBySecteur :any;
 
   constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController,
-    public loadingCtrl: LoadingController,public http: Http,public alertCtrl: AlertController) {
+    public loadingCtrl: LoadingController,public http: Http,
+    public navParams:NavParams, public alertCtrl: AlertController) {
     this.laodBudget(); 
   }
   ministere:any;
@@ -54,7 +59,7 @@ export class ContactPage {
   //http://haitibudget-env-1.max9ppfxgt.us-east-2.elasticbeanstalk.com/getAllEntiteAdministrativeWithDepense
   laodBudget(){
     //this.http.get("http://127.0.0.1/dashboard/fichier.json")
-    this.http.get("http://cristalhotelhaiti.com/api/entiteAdministrative.php")
+    this.http.get("http://websitedemo.biz/hbws/api/entiteAdministrative.php")
     .map(res=>res.json()) //JSON.parse(data)
     .subscribe(res=>{
       this.ministere=res;
@@ -64,24 +69,16 @@ export class ContactPage {
       this.showing = !this.showing;
     },(err) =>{
       console.log(err);
-      
       this.showAlertNoConnexion();
     });
   }
 
   goToDetailsMinistere(detailsministere){
-    //console.log(detailsministere);
     this.navCtrl.push(MinistereDetailsPage,{
       detailsministere:detailsministere
-   });
-   
-}
-
-  /*
-    goToDetailsMinistere(){
-        this.navCtrl.push(MinistereDetailsPage);
-    }
-  */
+   }); 
+  }
+  
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
     this.laodBudget();
@@ -92,29 +89,32 @@ export class ContactPage {
     }, 2000);
   }
   
-
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Visualiser le budget par ',
       buttons: [
         {
-          text: 'Liste de projet',
-          role: 'Secteur',
+          text: 'Sources de financement',
+          // role: 'Secteur',
           handler: () => {
-            
-            this.navCtrl.push(ProjetPage);
-          }
-        },{
-          text: 'Type de depense',
-          handler: () => {
-
-            this.navCtrl.push(StatistiquePage);
+             this.navCtrl.push(SourcesFinancementPage);
           }
         },
         {
-          text: 'Region geograhique',
+          text: 'Liste de projet',
+         // role: 'Secteur',
           handler: () => {
-          
+             this.navCtrl.push(ProjetPage);
+          }
+        },{
+          text: 'Secteur',
+          handler: () => {
+            this.navCtrl.push(SecteurPage);
+          }
+        },
+        {
+          text: 'Région géograhique',
+          handler: () => {
             this.navCtrl.push(TerritoirePage);
           }
         },

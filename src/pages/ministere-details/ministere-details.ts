@@ -22,7 +22,8 @@ export class MinistereDetailsPage {
     console.log(this.detailsministere)
     this.loadDepense(this.detailsministere.Id_entite);
     this.loadDepensinvestIssemente(this.detailsministere.Id_entite);
-    
+    this.ionViewWillEnter();
+    this.loadSousEntite(this.detailsministere.Id_entite);
   }
 
   goToInvest(){
@@ -57,7 +58,7 @@ depense:any;
 // faire une requette 
 loadDepense(id:any){
   //this.http.get("http://127.0.0.1/dashboard/fichier.json")
-  this.http.get("http://cristalhotelhaiti.com/api/depenses.php?entiteAdministratif="+this.detailsministere.Id_entite)
+  this.http.get("http://websitedemo.biz/hbws/api/depenses.php?entiteAdministratif="+this.detailsministere.Id_entite)
   .map(res=>res.json()) //JSON.parse(data)
   .subscribe(res=>{
     this.depense=res;
@@ -68,11 +69,12 @@ loadDepense(id:any){
     this.showAlertNoConnexion();
   });
 }
+
 investissement:any;
 // faire une requette 
 loadDepensinvestIssemente(id:any){
   //this.http.get("http://127.0.0.1/dashboard/fichier.json")
-  this.http.get("http://cristalhotelhaiti.com/api/investissement.php?entiteAdministratif="+this.detailsministere.Id_entite)
+  this.http.get("http://websitedemo.biz/hbws/api/investissement.php?entiteAdministratif="+this.detailsministere.Id_entite)
   .map(res=>res.json()) //JSON.parse(data)
   .subscribe(res=>{
     this.investissement=res;
@@ -84,4 +86,38 @@ loadDepensinvestIssemente(id:any){
   });
 }
 
+sousEntite: any;
+
+loadSousEntite(id:any){
+
+  // this.http.get("http://127.0.0.1/dashboard/fichier.json")
+  this.http.get("http://websitedemo.biz/hbws/api/sous_entiteAdministrative.php?entiteAdministratif="+this.detailsministere.Id_entite)
+  // this.http.get("http://websitedemo.biz/hbws/api/investissement.php?entiteAdministratif="+this.detailsministere.Id_entite)
+  .map(res=>res.json()) //JSON.parse(data)
+  .subscribe(res=>{
+    this.sousEntite=res;
+    console.log(this.sousEntite);
+    this.hideLoad();
+  },(err) =>{
+    console.log(err);
+    this.showAlertNoConnexion();
+  });
+}
+
+choice:string
+
+ionViewWillEnter(){
+this.choice = "dep"
+
+}
+doRefresh(refresher) {
+  console.log('Begin async operation', refresher);
+  this.loadDepense(this.detailsministere.Id_entite);
+  this.loadDepensinvestIssemente(this.detailsministere.Id_entite);
+
+  setTimeout(() => {
+    console.log('Async operation has ended');
+    refresher.complete();
+  }, 2000);
+}
 }

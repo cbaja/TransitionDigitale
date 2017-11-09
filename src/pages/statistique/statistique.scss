@@ -74,6 +74,113 @@ page-statistique {
         }
  
     }
+    #stat{
+    
+        height: auto;
+        
+        .listBar{
+            ul{
+                width: auto;
+                height: 0px;
+                text-decoration: none;
+                display:block;
+                li{
+                    height: 50px;
+                    text-decoration: none;
+                    display:block;
+                    margin-top: 30px;
+                    text-align: left;
+                    font-size:12px;
+                }
+            }
+        }
+        
+        .bar{
+        
+            width:200px;
+            background: rgb(101, 250, 126);
+            height: 20px;
+            line-height: 20px;
+            font-size: 9px;
+            padding-left:12px; 
+            
+        }        
+    }
 
+    #stat2{
+          
+            height: auto;
+            display: none;
+            .titre{
+                text-align: center;
+                font-size: 12px;
+                color: #333;
+                margin: auto;
+                margin-top: 16px;
+            }
+            .listBar{
+                ul{
+                    position: relative;
+                    width: auto;
+                    height: auto;
+                    text-decoration: none;
+                    display:block;
+                    padding-bottom: 1px;
+                    li{
+                        height: 20px;
+                        text-decoration: none;
+                        display:block;
+                        margin-top: 10px;
+                        text-align: left;
+                        font-size:12px;
+                    
+                    }
+                    span{
+                        position: absolute;
+                        margin-left: -60px;
+                        opacity: 0.6;
+                        padding-right: 8px;    
+                        text-align: center;
+
+                    }
+                }
+            }
+            
+            .bar1{
+            
+                width:200px;
+                background: rgb(101, 250, 126);
+                height: 16px;
+                line-height: 16px;
+                font-size: 12px;
+                padding-left:6px; 
+                margin-left: 40px;
+            }        
+            .bar2{
+                    width:100px;
+                    background: rgb(101, 250, 126);
+                    height: 16px;
+                    line-height: 16px;
+                    font-size: 12px;
+                    padding-left:6px; 
+                    margin-left: 40px;
+                    
+                }   
+        }
+
+        ul.pieds{
+            position: relative;
+            width: 1000px;
+            height: 20px;
+            display: none;
+            li{
+                display: inline-block;
+                width: 10px;
+                text-align: bottom;
+                z-index: 220;
+                margin-left: 39px;
+                opacity: 0.6;
+            }
+        }
 }
 

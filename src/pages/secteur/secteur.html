@@ -1,0 +1,63 @@
+<!--
+  Generated template for the SecteurPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar color="primary">
+    <ion-title>Secteur</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+<div class="content_contact">
+    <table>
+      <tr>
+        <td>
+            <div class="images">
+              <img src="assets/images/graphheader.png"/>
+            </div>
+         </td>
+        <td> 
+          <div class="textImages"> 
+              Classement par secteur
+          </div> 
+        </td>
+      </tr>
+    </table>    
+  </div>  
+  <ion-tabs>
+      <ion-tab [root]="tab1Root"></ion-tab>
+      <ion-tab [root]="tab2Root"></ion-tab>
+      <ion-tab [root]="tab3Root"></ion-tab>
+    </ion-tabs>
+    <div  *ngIf="showing" class="contentSpinner">    
+        <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+    <ion-refresher  (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                  pullingIcon="arrow-dropdown"
+                  pullingText="Pull to refresh"
+                  refreshingSpinner="circles"
+                  refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+
+      <ion-list>
+          <ion-item  *ngFor="let sec of secteur"  (tap)="showMinistereBySecteur(sec)">
+            <ion-avatar item-left>
+              <img src="assets/images/mi/amoirie.jpg"/>
+            </ion-avatar>
+            <h2>{{sec.libelle_secteur}}</h2>
+            <p>{{sec.montant_secteur | number:'4.2-2' }} Gourdes</p> 
+            <b> {{sec.montant_secteur * 100 / 144200000000 | number }} %</b> 
+            <!--<button (tap)="showdetails(post)"> See </button>-->
+          </ion-item>
+      </ion-list>
+
+</ion-content>

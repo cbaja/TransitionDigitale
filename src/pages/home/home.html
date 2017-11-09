@@ -1,12 +1,13 @@
 <ion-header no-border>
   <ion-navbar color="primary">
     <ion-title>Actualités</ion-title>
-
+    <!--
       <ion-buttons end>
         <button ion-button icon-only  (tap)="goToSearch()">
           <ion-icon name="search" ></ion-icon>
         </button>
       </ion-buttons>
+    -->
   </ion-navbar>
 </ion-header>
 
@@ -20,9 +21,10 @@
           pullingIcon="arrow-dropdown"
           pullingText="Pull to refresh"
           refreshingSpinner="circles"
-          refreshingText="Refreshing...">
+          refreshingText="">
         </ion-refresher-content>
       </ion-refresher>
+      
       <ion-card *ngFor="let article of articles" (tap)="goToDetails(article)">
          <img src="{{article.photoUrl}}"/>
         <ion-card-content>
@@ -30,23 +32,26 @@
               {{article.titre}}
           </ion-card-title>
           <p>
-            {{article.description}}
+              {{article.description |slice:0:310}}...
           </p>
+         
         </ion-card-content> 
-      <ion-row>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="thumbs-up"></ion-icon>
-            <div> Like</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="text"></ion-icon>
-            <div>Comments</div>
-          </button>
-        </ion-col>
-    
-      </ion-row>
+ 
     </ion-card>
 </ion-content>
+  <!--      
+  <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div> Like</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>Comments</div>
+        </button>
+      </ion-col>
+    </ion-row> 
+  -->

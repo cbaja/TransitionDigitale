@@ -7,6 +7,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
+
 
 @Component({
   selector: 'page-documentation',
@@ -14,13 +16,52 @@ import 'rxjs/add/operator/catch';
   providers:[PeopleServiceProvider]
 
 })
+
 export class DocumentationPage {
   documentBudget : any ; //= any;
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, private http: Http,
     public loadingCtrl: LoadingController,
+    private theInAppBrowser: InAppBrowser,
     public peopleServiceProvider: PeopleServiceProvider) {
     this.laodDocumentBudget(); 
   }
+
+  options : InAppBrowserOptions = {
+    location : 'yes',//Or 'no' 
+    hidden : 'no', //Or  'yes'
+    clearcache : 'yes',
+    clearsessioncache : 'yes',
+    zoom : 'yes',//Android only ,shows browser zoom controls 
+    hardwareback : 'yes',
+    mediaPlaybackRequiresUserAction : 'no',
+    shouldPauseOnSuspend : 'no', //Android only 
+    closebuttoncaption : 'Close', //iOS only
+    disallowoverscroll : 'no', //iOS only 
+    toolbar : 'yes', //iOS only 
+    enableViewportScale : 'no', //iOS only 
+    allowInlineMediaPlayback : 'no',//iOS only 
+    presentationstyle : 'pagesheet',//iOS only 
+    fullscreen : 'yes',//Windows only    
+};
+
+openUrl(url:string){
+  let target = "_blank";
+  this.theInAppBrowser.create(url,target,this.options);
+}
+
+ /*
+  public openWithSystemBrowser(url : string){
+    let target = "_system";
+    this.theInAppBrowser.create(url,target,this.options);
+}
+public openWithInAppBrowser(url : string){
+    let target = "_blank";
+    this.theInAppBrowser.create(url,target,this.options);
+}
+public openWithCordovaBrowser(url : string){
+    let target = "_self";
+    this.theInAppBrowser.create(url,target,this.options);
+}  */
   showAlertNoConnexion() {
     let alert = this.alertCtrl.create({
       title: 'Information!',
@@ -49,15 +90,20 @@ export class DocumentationPage {
   public showing = true;
   
   laodDocumentBudget(){
-    this.http.get("http://haitibudget-env-1.max9ppfxgt.us-east-2.elasticbeanstalk.com/getLastBudget")
+    this.http.get("http://websitedemo.biz/hbws/api/document.php")//
+    //this.http.get("http://127.0.0.1/dashboard/api/document.php")
+ 
     .map(res=>res.json())
     .subscribe(res=>{
-      var myTable = [];
-      myTable.push(res);
-      this.documentBudget=myTable;
+
+      this.documentBudget=res;
+      /*  
+        var myTable = [];
+        myTable.push(res);
+        this.documentBudget=myTable;
+      */
       console.log(this.documentBudget);
       this.hideLoad()
-  
       this.showing = !this.showing;
     },(err) =>{
       console.log(err);
@@ -85,32 +131,5 @@ export class DocumentationPage {
       thePost:thePost
   });
 
-    //alert(thePost)
-    /*
-    let prompt = this.alertCtrl.create({
-      title: 'Modifier informations',
-      inputs: [{
-          name: 'title'
-      }],
-      buttons: [
-          {
-              text: 'Cancel'
-          },
-          {
-              text: 'Save',
-              handler: data => {
-                  let index = this.postList.indexOf(thePost);
-
-                  if(index > -1){
-                    this.postList[index] = data;
-                  }
-              }
-          }
-      ]
-  });
-
-  prompt.present();   
-  */
-  }
-  
+  }  
 }

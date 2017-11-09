@@ -11,119 +11,31 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  
-    
-    <ion-list>
-          <ion-item >
-              <h2>Recettes fiscale</h2>
-              <p>69,332,330,720 Gourdes</p>
-          </ion-item>
-  
-          <ion-item >
-              <h2>Recettes non fiscales</h2>
-              <p>1,884,308,819 Gourdes</p>
-          </ion-item>
-          
-      </ion-list>
-      
-  
-      <ion-list>
-          <h6>AUTRES RESSOURCES </h6>
-          <ion-item >
-              <h2>Dons</h2>
-              <p>32,468,850,177 Gourdes</p>
-          </ion-item>
-  
-          <ion-item >
-              <h2>Recettes fiscale</h2>
-              <p>65,000,000 Gourdes</p>
-          </ion-item>
-          
-      </ion-list>
-  
-  
-      <!-- FINANCEMENT-->
-      <h5> FINANCEMENT </h5>
-      
-        <ion-list>
-      
+<ion-content >
+<div class="content_contact">
+        <table>
+            <tr>
+            <td>
+                <div class="images">
+                    <img src="assets/images/grap.png"/>
+                </div>
+                </td>
+            <td> 
+                <div class="textImages"> 
+                 Source de Financement
+                </div> 
+            </td>
+            </tr>
+        </table>    
+    </div>
+
+        <ion-list *ngFor="let finance of financement" >
               <ion-item>
-                  <h2>Emprunts externes</h2>
-                  <p>3,607,895,302 Gourdes</p>
-              </ion-item>
-      
-              <ion-item>
-                  <h2>Autres Financements</h2>
-                  <p>8,283,443,744 Gourdes</p>
-              </ion-item>
-  
-  
-              <ion-item>
-                  <h2> Financement institution financière</h2>
-                  <p>2,803,301,887 Gourdes</p>
-              </ion-item>          
+                    <ion-avatar item-left>
+                            <img src="assets/images/mi/amoirie.jpg"/>
+                    </ion-avatar>
+                  <h2>{{finance.libelleSources}}</h2>
+                  <p>{{finance.montantSources |  number:'4.2-2'}}  Gourdes</p>
+              </ion-item>     
           </ion-list>
-          
-    
   </ion-content>
-
-  <!--
-
-
-    <h5> RESSOURCES </h5>
-  
-    <ion-list>
-    <h6>RECETTES COURANTES </h6>
-    
-          <ion-item >
-              <h2>Recettes fiscale</h2>
-              <p>69,332,330,720 Gourdes</p>
-          </ion-item>
-  
-          <ion-item >
-              <h2>Recettes non fiscales</h2>
-              <p>1,884,308,819 Gourdes</p>
-          </ion-item>
-          
-      </ion-list>
-      
-  
-      <ion-list>
-          <h6>AUTRES RESSOURCES </h6>
-          <ion-item >
-              <h2>Dons</h2>
-              <p>32,468,850,177 Gourdes</p>
-          </ion-item>
-  
-          <ion-item >
-              <h2>Recettes fiscale</h2>
-              <p>65,000,000 Gourdes</p>
-          </ion-item>
-          
-      </ion-list>
-  
-  
-      <!-- FINANCEMENT-
-      <h5> FINANCEMENT </h5>
-      
-        <ion-list>
-      
-              <ion-item>
-                  <h2>Emprunts externes</h2>
-                  <p>3,607,895,302 Gourdes</p>
-              </ion-item>
-      
-              <ion-item>
-                  <h2>Autres Financements</h2>
-                  <p>8,283,443,744 Gourdes</p>
-              </ion-item>
-  
-  
-              <ion-item>
-                  <h2> Financement institution financière</h2>
-                  <p>2,803,301,887 Gourdes</p>
-              </ion-item>          
-          </ion-list>
-          
-  -->

@@ -7,18 +7,15 @@
 </ion-header>
 
 <ion-content>
-  <!-- 
-    id_projet": "1",
-    "libele_projet": "Construction 90 km de route ville geremie ",
-    "montant": "5000000",
-    "photoProjet": "urlPhotoProjet",
-    "porteProjet": "Departementale",
-    "id_sources": "2",
-    "montantSources": "50000000",
-    "libelleSources": "TResor publique",
-    "projet": "1"
-    photoUrlEntite
-  -->
+  <form (keyup.enter)="findProjet($event)">
+    <ion-searchbar 
+    [ngModelOptions]= "{standalone:true}"
+    color="primary"
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel">
+  </ion-searchbar>
+  </form>
+  
   <div  *ngIf="showing" class="contentSpinner">    
       <ion-spinner name="bubbles"></ion-spinner>
     </div>
@@ -27,20 +24,40 @@
                   pullingIcon="arrow-dropdown"
                   pullingText="Pull to refresh"
                   refreshingSpinner="circles"
-                  refreshingText="Refreshing...">
+                  refreshingText="">
         </ion-refresher-content>
-      </ion-refresher>
+    </ion-refresher>
                 
-
-<ion-list *ngFor="let pro of projet"   (tap)="goToDetailsProjet()" >
-
-    <ion-item>
-       <ion-avatar item-start>
-              <img src="{{pro.photoUrlEntite}}">
-        </ion-avatar>
-       <h1>{{pro.libele_projet}}</h1>
-        <p> {{pro.montant}} Gdes</p>    
-    </ion-item> 
-
+<ion-list *ngFor="let pro of projet" id="yesData">
+  <div *ngIf="pro.acronymeEntite; else noData">
+      <div class="table">
+          <div class="imagesProjet">
+            <img src="http://websitedemo.biz/hbws/img/uploads/{{pro.photoUrlEntite}}"/>
+          </div>
+  
+          <div class="contentTitre">
+              <h2>{{pro.acronymeEntite}}</h2>
+              <h3> {{pro.libelle_cartographie}}</h3>    
+              <b> {{pro.designation}}</b>    
+          </div>
+        
+          <div class="contentDesc">
+              <b> {{pro.montant | number:'4.2-2'}} Gourdes</b><br/>
+              <p> {{pro.libele_projet}}</p>
+          </div>
+      </div> 
+  </div>
 </ion-list>
+
+<div id="noData" *ngIf="projet == null || projet.length == 0">
+  <div class="noProjet"> 
+    <div class="nothing">
+       <img src="assets/images/projet.png" width="40%" height="40%"/>
+    </div>
+    <div class="text"> 
+        Pas de projet pour cet departement ! 
+    </div>
+  </div>
+</div>
+
 </ion-content>

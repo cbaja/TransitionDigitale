@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 
-import { TerritoirePage } from '../territoire/territoire';
+//import { TerritoirePage } from '../territoire/territoire';
 import { StatistiquePage } from '../statistique/statistique';
 
 

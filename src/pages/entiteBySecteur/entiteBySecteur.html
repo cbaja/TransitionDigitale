@@ -1,0 +1,78 @@
+<ion-header no-border>
+  <ion-navbar color="primary">
+    <ion-title>
+      Secteur|Budget
+    </ion-title>
+   <!--   
+      <ion-buttons end>
+        <button ion-button icon-only  (tap)="presentActionSheet()">
+          <ion-icon name="options" ></ion-icon>
+        </button>
+      </ion-buttons>
+    -->   
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+<div class="content_contact">
+    <table>
+      <tr>
+        <td>
+            <div class="images">
+              <img src="assets/images/graphheader.png"/>
+            </div>
+         </td>
+        <td> 
+          <div class="textImages"> 
+              Classement par entité de l'état selon le secteur 
+          </div> 
+        </td>
+      </tr>
+    </table>    
+  </div>  
+    
+  <div  *ngIf="showing" class="contentSpinner">    
+      <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+  <ion-refresher  (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Pull to refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+              
+
+  <div class="iongrid">
+    <div class="ionrow">
+      <div class ="ioncol"  *ngFor="let minis of ministereSecteur" class="rouge" (tap)="goToDetailsMinistere(minis)">
+          <div *ngIf="minis.acronymeEntite; else noData">
+            <div class="content_item">
+             <div class="images">
+                <img src="http://websitedemo.biz/hbws/img/uploads/{{minis.photoUrlEntite}}"/>
+              </div>
+               <h2> {{minis.acronymeEntite}} </h2>
+                <p> {{minis.nomEntite}} <br/></p>
+                <ion-badge item-end>  
+                    <span id="currency-default"> 
+                      {{minis.montantEntite | number:'4.2-2'}} Gourdes
+                    </span>
+                </ion-badge>  
+              </div>
+            </div>
+      </div> 
+     </div>
+     <div id="noData" *ngIf="ministereSecteur == null || ministereSecteur.length == 0">
+        <div class="noProjet"> 
+          <div class="text"> 
+              Aucune entité n'est attribué à ce secteur.
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+</ion-content>

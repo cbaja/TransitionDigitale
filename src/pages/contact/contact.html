@@ -29,6 +29,7 @@
       </tr>
     </table>    
   </div>  
+    
   <div  *ngIf="showing" class="contentSpinner">    
       <ion-spinner name="bubbles"></ion-spinner>
   </div>
@@ -42,22 +43,36 @@
     </ion-refresher>
               
 
-  <ion-grid>
-    <ion-row >
-      <ion-col  *ngFor="let minis of ministere" class="rouge" (tap)="goToDetailsMinistere(minis)">
-      
-          <div class="images">
-            <img src="{{minis.photoUrlEntite}}"/>
+  <div class="iongrid">
+    <div class="ionrow">
+      <div class ="ioncol"  *ngFor="let minis of ministere" class="rouge" (tap)="goToDetailsMinistere(minis)">
+        <div class="content_item">
+        <div class="images">
+            <img src="http://websitedemo.biz/hbws/img/uploads/{{minis.photoUrlEntite}}"/>
           </div>
            <h2> {{minis.acronymeEntite}} </h2>
             <p> {{minis.nomEntite}} <br/></p>
             <ion-badge item-end>  
                 <span id="currency-default"> 
-                  {{minis.montantEntite}} Gourdes
+                  {{minis.montantEntite | number:'4.2-2'}} Gourdes
                 </span>
             </ion-badge>  
-            </ion-col>
-    </ion-row>
-  </ion-grid>
+            
+          </div>
+        </div>
+      </div>
+  </div>
+<!--
+  <ion-list  *ngFor="let minis of ministere" class="rouge" (tap)="goToDetailsMinistere(minis)">
+    <ion-item >
+      <ion-avatar item-start>
+        <img src="http://websitedemo.biz/hbws/img/uploads/{{minis.photoUrlEntite}}"/>
+      </ion-avatar>
+      <h2>{{minis.acronymeEntite}} </h2></b>
+      <h2>{{minis.nomEntite}} </h2>
+      <h2> {{minis.montantEntite | number:'4.2-2'}} Gourdes</h2>
+    </ion-item>
+  </ion-list>-->
+
 </ion-content>
 <!--  {{minis.montantEntite | currency}} Gourdes -->

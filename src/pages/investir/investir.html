@@ -18,17 +18,31 @@
              </td>
             <td> 
               <div class="textImages"> 
-                Cartographie haiti
+                Cartographie haïti
               </div> 
             </td>
           </tr>
         </table>    
       </div>   
 
-    <div class="map" (tap)="gotoTerrtoire()">
+    <div class="map"  (tap)="gotoTerrtoire()" >
       <div class="images">
         <img src="assets/images/haitimap.png" width="100%" height="100%"/>
+    </div>  
+  </div>
+    
+    <!-- HTML -->
+    <div id="chartdiv">
+        <img class="carte nouest" src="assets/images/map/nord_Ouest.png"/>
+        <img class="carte no" src="assets/images/map/nord.png"/>
+        <img class="carte noest" src="assets/images/map/nord_Est.png"/>
+        <img class="carte artibo" src="assets/images/map/artibonite.png"/>
+        <img class="carte centre" src="assets/images/map/centre.png"/>
+        <img class="carte ouest" src="assets/images/map/ouest.png"/>
+        <img class="carte sud" src="assets/images/map/sud.png"/>
+        <img class="carte sudest" src="assets/images/map/sudEst.png"/>
+        <img class="carte nippes" src="assets/images/map/nippes.png"/>
     </div>
-  </div>  
 
 </ion-content>
+<!-- (tap)="gotoTerrtoire()" -->
