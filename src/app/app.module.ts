@@ -34,6 +34,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { entiteBySecteur } from '../pages/entiteBySecteur/entiteBySecteur'; 
+import { budgetApercu } from '../pages/budgetApercu/budgetApercu'; 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -52,6 +54,7 @@ import { entiteBySecteur } from '../pages/entiteBySecteur/entiteBySecteur';
     DocumentationPage,
     SecteurPage,
     entiteBySecteur,
+    budgetApercu,
     
   ],
   imports: [
@@ -76,6 +79,7 @@ import { entiteBySecteur } from '../pages/entiteBySecteur/entiteBySecteur';
     DocumentationPage,
     SecteurPage,
     entiteBySecteur,
+    budgetApercu,
     
   ],
   providers: [

@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NavController,ActionSheetController,LoadingController ,AlertController,NavParams} from 'ionic-angular';
 import { MinistereDetailsPage } from '../ministere-details/ministere-details';
 import { TerritoirePage } from '../territoire/territoire';
-//import { StatistiquePage } from '../statistique/statistique';
 import { ProjetPage } from '../projet/projet';
 import { SecteurPage } from '../secteur/secteur';
 import { SourcesFinancementPage } from '../sources-financement/sources-financement';
+//import { budgetApercu } from '../budgetApercu/budgetApercu';
 
 
 import { Http} from '@angular/http';
@@ -92,7 +92,17 @@ export class ContactPage {
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Visualiser le budget par ',
+      
       buttons: [
+       /*
+        {
+          text: 'Aperçu sur le budget',
+          // role: 'Secteur',
+          handler: () => {
+             this.navCtrl.push(budgetApercu);
+          }
+        },
+      */
         {
           text: 'Sources de financement',
           // role: 'Secteur',
@@ -100,6 +110,7 @@ export class ContactPage {
              this.navCtrl.push(SourcesFinancementPage);
           }
         },
+
         {
           text: 'Liste de projet',
          // role: 'Secteur',

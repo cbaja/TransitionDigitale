@@ -33,9 +33,10 @@ export class MinistereDetailsPage {
   showLoad() {
     const loading = this.loadingCtrl.create({
       content: 'Please wait...'
-    });
+  });
   
-    loading.present();
+  loading.present();
+
   }
   
   hideLoad() {
@@ -45,6 +46,7 @@ export class MinistereDetailsPage {
     loading.present();
     loading.dismiss();
   }
+  
   showAlertNoConnexion() {
     let alert = this.alertCtrl.create({
       title: 'Information!',

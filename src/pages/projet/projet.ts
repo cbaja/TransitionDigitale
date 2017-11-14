@@ -97,8 +97,7 @@ export class ProjetPage {
   }
 
   laodAllProjet(){
-    //this.http.get("http://127.0.0.1/dashboard/fichier.json")
-    
+  
     this.http.get("http://websitedemo.biz/hbws/api/projet.php")
     .map(res=>res.json()) 
     .subscribe(res=>{

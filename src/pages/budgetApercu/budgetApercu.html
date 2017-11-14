@@ -1,0 +1,53 @@
+<ion-header no-border>
+    <ion-navbar color="primary">
+      <ion-title>
+       Aperçu du budget
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+      
+      <div padding>
+          <ion-segment [(ngModel)]="choice">
+            <ion-segment-button value="dix">
+              En 10 questions
+            </ion-segment-button>
+    
+            <ion-segment-button value="bref">
+              Le budget en bref
+            </ion-segment-button>
+  
+            <ion-segment-button value="consulter">
+              Consulter le budget
+              </ion-segment-button>
+          </ion-segment>
+        </div>
+        
+        <div [ngSwitch]="choice">
+
+          <ion-list *ngSwitchCase="'dix'">
+              <h1> Text for 10 questions</h1>
+          </ion-list>
+        
+          <ion-list *ngSwitchCase="'bref'">
+            
+              <h1>Le bdget en bref</h1>
+            
+          </ion-list>
+  
+          <ion-list *ngSwitchCase="'consulter'">
+            
+              <h1> Consulter le budget </h1>
+            
+          </ion-list>
+      </div>
+      <ion-refresher  (ionRefresh)="doRefresh($event)">
+              <ion-refresher-content
+              pullingIcon="arrow-dropdown"
+              pullingText="Pull to refresh"
+              refreshingSpinner="circles">
+              </ion-refresher-content>
+      </ion-refresher>
+  </ion-content>
+  
