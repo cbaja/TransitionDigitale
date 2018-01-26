@@ -59,3 +59,5 @@ export class AboutPage {
   }
 
 }
+/*
+Add windows platform for android*/
