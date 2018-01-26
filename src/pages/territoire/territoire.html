@@ -43,9 +43,9 @@
     <ion-list>
         <ion-item *ngFor="let depart of departement" (tap)= "sedprojetbydepatement(depart)">
             <ion-avatar item-start>
-              <img src="{{depart.photoCartographie}}">
+              <img  src="{{depart.photoCartographie}}"/>
             </ion-avatar>
-            <h2>{{depart.libelle_cartographie}}</h2>
+            <h2> {{depart.libelle_cartographie}} </h2>
             <p> {{depart.montant_cartographie}} Gdes</p>    
         </ion-item>
     </ion-list>

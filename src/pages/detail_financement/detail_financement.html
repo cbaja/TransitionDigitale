@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      {{financePass.libelleSources}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+ 
+   <div class="content_contact">
+    <table>
+      <tr>
+        <td>
+            <div class="images">
+                <img src="assets/images/mi/amoirie.jpg"/>       
+            </div>
+         </td>
+        <td> 
+          <div class="textImages"> 
+              {{financePass.montantSources | number:'4.2-2' }} Gds<br/>
+          </div> 
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let detail_finance of det">
+      <ion-avatar item-left>
+          <img src="assets/images/mi/amoirie.jpg"/>
+      </ion-avatar>
+      <h2>
+          {{det.libelle_details}}
+      </h2>
+      
+      <b>
+          {{det.montant | number:'4.2-2'}} Gourdes
+      </b>
+    </ion-item> 
+  </ion-list>
+
+</ion-content>
+<!-- (tap)="gotoTerrtoire()" -->

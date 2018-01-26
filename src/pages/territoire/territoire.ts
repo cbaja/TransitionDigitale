@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController,LoadingController ,AlertController } from 'ionic-angular';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 import { ProjetPage } from '../projet/projet';
 // import { Chart } from 'chart.js';
@@ -20,7 +21,8 @@ import 'rxjs/add/operator/catch';
 })
 export class TerritoirePage {
   //private chart: AmChart;
-
+  budget: any = localStorage.getItem("budget") 
+  
   options : InAppBrowserOptions = {
     location : 'yes',//Or 'no' 
     hidden : 'no', //Or  'yes'
@@ -39,13 +41,13 @@ export class TerritoirePage {
     fullscreen : 'yes',//Windows only    
 };
 
+
   constructor(public navCtrl: NavController,
     //private AmCharts: AmChartsService,
     public http:Http, public alertCtrl: AlertController, public loadingCtrl: LoadingController,
+    private nativeStorage: NativeStorage,
     private theInAppBrowser: InAppBrowser) {
       this.loadBudgetDepartement();
-     
-      
   }
  onViewLoad(){
   this.showLoad()
@@ -89,10 +91,11 @@ export class TerritoirePage {
     loading.present();
     loading.dismiss();
   }
-  showAlertNoConnexion() {
+
+  showAlertNoConnexion(message:any) {
     let alert = this.alertCtrl.create({
       title: 'Information!',
-      subTitle: 'Vérifiez votre connexion internet!',
+      subTitle: message,
       buttons: ['OK']
     });
     alert.present();
@@ -115,21 +118,35 @@ export class TerritoirePage {
   public showing = true; 
 
   loadBudgetDepartement(){
-    //this.http.get("http://127.0.0.1/dashboard/fichier.json")
-    this.http.get("http://websitedemo.biz/hbws/api/cartographieBudget.php")
-    //this.http.get("http://127.0.0.1/dashboard/api/cartographieBudget.php")
+    //this.http.get("http://bidjepeyidayiti.ht/admin/fichier.json")
+    //this.http.get("http://websitedemo.biz/hbws/api/cartographieBudget.php?budget="+this.budget)
+    this.http.get("http://bidjepeyidayiti.ht/admin/api/cartographieBudget.php?budget="+this.budget)
     .map(res=>res.json()) //JSON.parse(data)
     .subscribe(res=>{
       this.departement=res;
       console.log(this.departement);
       this.hideLoad();
-      //this.showing = false;
+      this.nativeStorage.setItem("haitiBudgetLocal_db_territoire", res);
+
       this.showing = !this.showing;
     },(err) =>{
-      console.log(err);
-      this.showAlertNoConnexion();
+ 
+      this.nativeStorage.getItem('haitiBudgetLocal_db_territoire').then((resdepartement) => {
+        if(resdepartement != null)
+        {
+         // this.showAlertNoConnexion("C'est données sont en caches");
+          this.departement=resdepartement;
+          this.showing = !this.showing;
+        }
+        else
+        {
+          this.showAlertNoConnexion("verifiez votre connexion internet" );
+        }
+      });
+
     });
   }
+  
   sedprojetbydepatement(projetdepartement){
     this.navCtrl.push(ProjetPage,{
       projetdepartement:projetdepartement

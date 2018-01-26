@@ -1,7 +1,7 @@
 <ion-header no-border>
-  <ion-navbar color="primary">
-    <ion-title>Documentations </ion-title>
-  </ion-navbar>
+    <ion-navbar color="primary">
+      <ion-title>Documentations</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
@@ -15,7 +15,7 @@
              </td>
             <td> 
               <div class="textImages"> 
-                Document relative au budget
+                Documents relative au budget
               </div> 
             </td>
           </tr>
@@ -33,42 +33,18 @@
               refreshingText="">
           </ion-refresher-content>
         </ion-refresher>
-      
-  <ion-list padding>
-    <div class="ion-item" *ngFor="let doc of documentBudget">
-      <div class="on-avatar" item-left>
-        <img src="assets/images/pdf.png"/>
-      </div>
-      <div class="title">{{doc.description |slice:0:120 }}</div>
-      <div class="btn">
-          <button ion-button icon-left clear small (tap)="openUrl(doc.lien)">
-            <ion-icon name="download">
+
+      <ion-list>
+        <ion-item  *ngFor="let doc of documentBudget">
+          <ion-avatar item-left>
+            <img src="assets/images/pdf.png"/>
+          </ion-avatar>
+          <h2> {{doc.lefichier |slice:0:120 }} </h2>
+          <p>  
               <a href="http://websitedemo.biz/hbws/img/uploads/{{doc.lien}}">
                 Télécharger
               </a>
-            </ion-icon>
-          </button>
-        </div>
-        <!-- <button (tap)="showdetails(post)"> See </button>-->
-      </div>
-  </ion-list>
-  <!--
-  <ion-list>
-      <ion-item  *ngFor="let doc of documentBudget">
-        <ion-avatar item-left>
-          <img src="assets/images/pdf.png"/>
-        </ion-avatar>
-
-        <div>{{doc.description |slice:0:120 }}</div>
-    
-        <button ion-button icon-left clear small (tap)="openUrl(doc.lien)">
-          <ion-icon name="download">
-            <a href="http://websitedemo.biz/hbws/img/uploads/{{doc.lien}}">
-              Télécharger
-            </a>
-          </ion-icon>
-        </button>
-      </ion-item>
-  </ion-list>
--->
+          </p> 
+        </ion-item>
+    </ion-list>
   </ion-content>

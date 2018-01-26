@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { NativeStorage } from '@ionic-native/native-storage';
 import { NavController,ActionSheetController,LoadingController ,AlertController,NavParams} from 'ionic-angular';
 import { MinistereDetailsPage } from '../ministere-details/ministere-details';
 import { TerritoirePage } from '../territoire/territoire';
 import { ProjetPage } from '../projet/projet';
 import { SecteurPage } from '../secteur/secteur';
+import { ChoicePage } from '../choice/choice';
+
 import { SourcesFinancementPage } from '../sources-financement/sources-financement';
 //import { budgetApercu } from '../budgetApercu/budgetApercu';
-
 
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -20,10 +22,14 @@ import 'rxjs/add/operator/catch';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
+
+  budget: any = localStorage.getItem("budget") 
+  
   ministereBySecteur :any;
 
   constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController,
     public loadingCtrl: LoadingController,public http: Http,
+    private nativeStorage: NativeStorage,
     public navParams:NavParams, public alertCtrl: AlertController) {
     this.laodBudget(); 
   }
@@ -44,10 +50,10 @@ export class ContactPage {
     loading.present();
     loading.dismiss();
   }
-  showAlertNoConnexion() {
+  showAlertNoConnexion(message:any) {
     let alert = this.alertCtrl.create({
       title: 'Information!',
-      subTitle: 'Vérifiez votre connexion internet!',
+      subTitle: message,
       buttons: ['OK']
     });
     alert.present();
@@ -58,18 +64,32 @@ export class ContactPage {
 
   //http://haitibudget-env-1.max9ppfxgt.us-east-2.elasticbeanstalk.com/getAllEntiteAdministrativeWithDepense
   laodBudget(){
-    //this.http.get("http://127.0.0.1/dashboard/fichier.json")
-    this.http.get("http://websitedemo.biz/hbws/api/entiteAdministrative.php")
+    this.http.get("http://bidjepeyidayiti.ht/admin/api/entiteAdministrative.php?budget="+this.budget)
+    //this.http.get("http://websitedemo.biz/hbws/api/entiteAdministrative.php")
     .map(res=>res.json()) //JSON.parse(data)
     .subscribe(res=>{
       this.ministere=res;
       console.log(this.ministere);
       this.hideLoad();
-  
+      this.nativeStorage.setItem("haitiBudgetLocal_db_ministere", res);
       this.showing = !this.showing;
     },(err) =>{
       console.log(err);
-      this.showAlertNoConnexion();
+      console.log(this.nativeStorage.getItem("haitiBudgetLocal_db_ministere"))
+  
+      this.nativeStorage.getItem('haitiBudgetLocal_db_ministere').then((resMinistere) => {
+        if(resMinistere != null)
+        {
+          //this.showAlertNoConnexion("C'est données sont en caches");
+          this.ministere=resMinistere;
+          this.showing = !this.showing;
+        }
+        else
+        {
+          this.showAlertNoConnexion("Verifiez votre connexion internet" );
+        }
+      });
+
     });
   }
 
@@ -127,6 +147,12 @@ export class ContactPage {
           text: 'Région géograhique',
           handler: () => {
             this.navCtrl.push(TerritoirePage);
+          }
+        },
+        {
+          text: 'Choississez un autre budget',
+          handler: () => {
+            this.navCtrl.push(ChoicePage);
           }
         },
         {

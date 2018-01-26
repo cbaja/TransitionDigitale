@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+
+import { OneSignal } from '@ionic-native/onesignal';
+import { IonicStorageModule } from '@ionic/storage';
+
 import { MinistereDetailsPage } from '../pages/ministere-details/ministere-details';
 import { AboutPage } from '../pages/about/about';
 
@@ -12,14 +16,13 @@ import { TerritoirePage } from '../pages/territoire/territoire';
 import { SourcesFinancementPage } from '../pages/sources-financement/sources-financement';
 
 import { StatistiquePage } from '../pages/statistique/statistique';
-import { InvestirPage } from '../pages/investir/investir'; 
+import { DetailsFinancementPage } from '../pages/detail_financement/detail_financement'; 
 import { ProjetPage } from '../pages/projet/projet';
 import { SearchPage } from '../pages/search/search';
 import { DetailsProjetPage } from '../pages/details-projet/details-projet';
 
 import { DocumentationPage } from '../pages/documentation/documentation'; 
 import { SecteurPage } from '../pages/secteur/secteur'; 
-
 
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -35,6 +38,11 @@ import { PeopleServiceProvider } from '../providers/people-service/people-servic
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { entiteBySecteur } from '../pages/entiteBySecteur/entiteBySecteur'; 
 import { budgetApercu } from '../pages/budgetApercu/budgetApercu'; 
+import { ChoicePage } from '../pages/choice/choice';
+import { NativeStorage } from '@ionic-native/native-storage';
+
+import { SQLite } from '@ionic-native/sqlite';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +55,7 @@ import { budgetApercu } from '../pages/budgetApercu/budgetApercu';
     MinistereDetailsPage,
     StatistiquePage,
     TerritoirePage,
-    InvestirPage,
+    DetailsFinancementPage,
     ProjetPage,
     SearchPage,
     SourcesFinancementPage,
@@ -55,11 +63,18 @@ import { budgetApercu } from '../pages/budgetApercu/budgetApercu';
     SecteurPage,
     entiteBySecteur,
     budgetApercu,
-    
+    ChoicePage,    
   ],
   imports: [
+   
     BrowserModule,HttpModule,AmChartsModule,
-    IonicModule.forRoot(MyApp),ChartModule.forRoot(highcharts)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
+    ChartModule.forRoot(highcharts),
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+         driverOrder: ['indexeddb', 'sqlite', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,7 +86,7 @@ import { budgetApercu } from '../pages/budgetApercu/budgetApercu';
     TabsPage,
     MinistereDetailsPage,
     TerritoirePage,
-    InvestirPage,
+    DetailsFinancementPage,
     ProjetPage,
     SearchPage,
     StatistiquePage,
@@ -80,13 +95,17 @@ import { budgetApercu } from '../pages/budgetApercu/budgetApercu';
     SecteurPage,
     entiteBySecteur,
     budgetApercu,
+    ChoicePage,
+    
     
   ],
   providers: [
     StatusBar,
     SplashScreen,InAppBrowser,SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PeopleServiceProvider
+    PeopleServiceProvider,
+    SQLite,
+    NativeStorage,OneSignal
   ]
 })
 export class AppModule {}

@@ -12,6 +12,14 @@
 </ion-header>
 
 <ion-content >
+<ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Pull to refresh"
+                refreshingSpinner="circles"
+                refreshingText="">
+    </ion-refresher-content>
+</ion-refresher>
 <div class="content_contact">
         <table>
             <tr>
@@ -28,14 +36,14 @@
             </tr>
         </table>    
     </div>
-
-        <ion-list *ngFor="let finance of financement" >
-              <ion-item>
-                    <ion-avatar item-left>
-                            <img src="assets/images/mi/amoirie.jpg"/>
-                    </ion-avatar>
-                  <h2>{{finance.libelleSources}}</h2>
-                  <p>{{finance.montantSources |  number:'4.2-2'}}  Gourdes</p>
-              </ion-item>     
-          </ion-list>
+    
+    <ion-list>
+        <ion-item  *ngFor="let finance of financement" (tap)="detailsSource(finance)">
+            <ion-avatar item-left>
+                    <img src="assets/images/mi/amoirie.jpg"/>
+            </ion-avatar>
+            <h2>{{finance.libelleSources}}</h2>
+            <p>{{finance.montantSources |  number:'4.2-2'}}  Gourdes</p>
+        </ion-item>     
+    </ion-list>
   </ion-content>

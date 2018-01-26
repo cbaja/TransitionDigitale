@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController,NavParams,IonicPage,LoadingController ,AlertController} from 'ionic-angular';
 import { DetailsProjetPage } from '../details-projet/details-projet';
-
+import { NativeStorage } from '@ionic-native/native-storage';
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -25,15 +25,19 @@ import * as $ from 'jquery'
 export class StatistiquePage {
     chartOptions: any;
 
+   budget: any = localStorage.getItem("budget") 
+   annee:any = localStorage.getItem("annee") 
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public loadingCtrl: LoadingController,public http: Http,public alertCtrl: AlertController) {
+    public loadingCtrl: LoadingController,public http: Http,
+    private nativeStorage: NativeStorage,public alertCtrl: AlertController) {
     
     this.laodBudget();
 
     //$('#stat').hide();
 
-   // var val = this.convert(1221111111,"");
-   // alert(val)
+    // var val = this.convert(1221111111,"");
+    // alert(val)
   }
    convert(n, cuurent){
     return cuurent+""+n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g,"$1,");
@@ -56,11 +60,10 @@ export class StatistiquePage {
     for(var i = 0; i < this.ministere.length; i++) {
         arrayAcronym.push(this.ministere[i].acronymeEntite);
         arrayMontant.push(this.ministere[i].montantEntite * 1);
-        //this.convert
     }
 
     seriesJSONArray.push({
-        "name": 'Année 2017 - 2018',  
+        "name": this.annee,  
         "data": arrayMontant
     });
 
@@ -163,10 +166,10 @@ export class StatistiquePage {
     loading.present();
     loading.dismiss();
   }
-  showAlertNoConnexion() {
+  showAlertNoConnexion(message:any) {
     let alert = this.alertCtrl.create({
       title: 'Information!',
-      subTitle: 'Vérifiez votre connexion internet!',
+      subTitle: message,
       buttons: ['OK']
     });
     alert.present();
@@ -176,23 +179,37 @@ export class StatistiquePage {
   public showing = true;
 
   laodBudget(){
-    //this.http.get("http://127.0.0.1/dashboard/fichier.json")
-    this.http.get("http://websitedemo.biz/hbws/api/entiteAdministrative.php")
+    //this.http.get("http://bidjepeyidayiti.ht/admin/fichier.json")
+    this.http.get("http://bidjepeyidayiti.ht/admin/api/entiteAdministrative.php?budget="+this.budget)
+    //this.http.get("http://websitedemo.biz/hbws/api/entiteAdministrative.php")
     .map(res=>res.json()) //JSON.parse(data)
     .subscribe(res=>{
       this.ministere=res;
-
-
       console.log(this.ministere);
       this.hideLoad();
-
       this.showing = !this.showing;
-
+      this.nativeStorage.setItem("haitiBudgetLocal_db_statistique", res);
       this.showData();
     },(err) =>{
-      console.log(err);
+        console.log(err);
+        
+            console.log(this.nativeStorage.getItem("haitiBudgetLocal_db_statistique"))
+            this.nativeStorage.getItem('haitiBudgetLocal_db_statistique').then((resStat) => {
+              if(resStat != null)
+              {
+                this.showAlertNoConnexion("C'est données sont en caches");
+                this.ministere=resStat;
+                this.showData();
+                this.showing = !this.showing;
+
+              }
+              else
+              {
+                this.showAlertNoConnexion("Vous n'avez pas les données en cache, verifiez votre connexion internet" );
+              }
+            });
       
-      this.showAlertNoConnexion();
+    
     });
   }
 

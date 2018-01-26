@@ -5,7 +5,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { entiteBySecteur } from '../entiteBySecteur/entiteBySecteur';
+import { entiteBySecteur } from '../entiteBySecteur/entiteBySecteur'
+import { NativeStorage } from '@ionic-native/native-storage';
+
+
 //import { DecimalPipe } from '@angular/common';
 
 /**
@@ -21,11 +24,13 @@ import { entiteBySecteur } from '../entiteBySecteur/entiteBySecteur';
   templateUrl: 'secteur.html',
 })
 export class SecteurPage {
-
+  budget: any = localStorage.getItem("budget") 
   constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController,
+    private nativeStorage: NativeStorage,
     public loadingCtrl: LoadingController,public http: Http,public alertCtrl: AlertController) {
     this.laodSecteur(); 
   }
+
   secteur:any;
   
   showLoad() {
@@ -43,10 +48,10 @@ export class SecteurPage {
     loading.present();
     loading.dismiss();
   }
-  showAlertNoConnexion() {
+  showAlertNoConnexion(message) {
     let alert = this.alertCtrl.create({
       title: 'Information!',
-      subTitle: 'Vérifiez votre connexion internet!',
+      subTitle: message,
       buttons: ['OK']
     });
     alert.present();
@@ -56,18 +61,29 @@ export class SecteurPage {
   public showing = true;
 
   laodSecteur(){
-    //this.http.get("http://127.0.0.1/dashboard/fichier.json")
-    this.http.get("http://websitedemo.biz/hbws/api/secteur.php")
+    this.http.get("http://bidjepeyidayiti.ht/admin/api/secteur.php?budget="+this.budget)
 
     .map(res=>res.json()) //JSON.parse(data)
     .subscribe(res=>{
       this.secteur=res;
       console.log(this.secteur);
       this.hideLoad();
+      this.nativeStorage.setItem("haitiBudgetLocal_db_secteur", res);
       this.showing = !this.showing;
     },(err) =>{
-      console.log(err);
-      this.showAlertNoConnexion();
+      console.log(this.nativeStorage.getItem("haitiBudgetLocal_db_secteur"))
+      this.nativeStorage.getItem('haitiBudgetLocal_db_secteur').then((resSecteur) => {
+        if(resSecteur != null)
+        {
+          // this.showAlertNoConnexion("C'est données sont en caches");
+          this.secteur=resSecteur;
+          this.showing = !this.showing;
+        }
+        else
+        {
+          this.showAlertNoConnexion("Verifiez votre connexion internet" );
+        }
+      });
     });
   }
 

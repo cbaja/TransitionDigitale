@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController,LoadingController ,AlertController} from 'ionic-angular';
 
+import { NativeStorage } from '@ionic-native/native-storage';
+
 
 import { AboutPage } from '../about/about';
 // import { SearchPage } from '../search/search';
@@ -19,10 +21,14 @@ import { ModalController } from 'ionic-angular';
 })
 export class HomePage {
 
+  budget: any = localStorage.getItem("budget") 
+
   constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
+    private nativeStorage: NativeStorage,
     public http: Http,public alertCtrl: AlertController) {
-    this.laodArticles(); 
+    this.laodArticles();
+
   }
 
 
@@ -42,31 +48,45 @@ export class HomePage {
     loading.present();
     loading.dismiss();
   }
-  showAlertNoConnexion() {
+
+  showAlertNoConnexion(message:any) {
     let alert = this.alertCtrl.create({
       title: 'Information!',
-      subTitle: 'Vérifiez votre connexion internet!',
+      subTitle: message,
       buttons: ['OK']
     });
     alert.present();
     //this.showLoad();
   }
+
   public showing = true;
   //http://haitibudget-env-1.max9ppfxgt.us-east-2.elasticbeanstalk.com/getAllEntiteAdministrativeWithDepense
   laodArticles(){
-  this.http.get("http://websitedemo.biz/hbws/api/articles.php")
-  //this.http.get("http://127.0.0.1/dashboard/api/articles.php")
+    
+  //this.http.get("http://websitedemo.biz/hbws/api/articles.php")
+    this.http.get("http://bidjepeyidayiti.ht/admin/api/articles.php")
  
     .map(res=>res.json()) 
     .subscribe(res=>{
       this.articles=res;
-      console.log(this.articles);
+      this.nativeStorage.setItem("haitiBudgetLocal_db_article", res);
       this.hideLoad();
       this.showing = !this.showing;
     },(err) =>{
-      console.log(err);
-      
-      this.showAlertNoConnexion();
+   
+      console.log(this.nativeStorage.getItem("haitiBudgetLocal_db_article"))
+      this.nativeStorage.getItem('haitiBudgetLocal_db_article').then((resArticle) => {
+        if(resArticle != null)
+        {
+          // this.showAlertNoConnexion("C'est données sont en caches");
+          this.articles=resArticle;
+          this.showing = !this.showing;
+        }
+        else
+        {
+          this.showAlertNoConnexion("Verifiez votre connexion internet");
+        }
+          });
     });
   }
 

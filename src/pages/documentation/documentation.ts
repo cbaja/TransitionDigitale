@@ -8,6 +8,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 
 @Component({
@@ -22,6 +23,8 @@ export class DocumentationPage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, private http: Http,
     public loadingCtrl: LoadingController,
     private theInAppBrowser: InAppBrowser,
+    private nativeStorage: NativeStorage,
+
     public peopleServiceProvider: PeopleServiceProvider) {
     this.laodDocumentBudget(); 
   }
@@ -49,23 +52,10 @@ openUrl(url:string){
   this.theInAppBrowser.create(url,target,this.options);
 }
 
- /*
-  public openWithSystemBrowser(url : string){
-    let target = "_system";
-    this.theInAppBrowser.create(url,target,this.options);
-}
-public openWithInAppBrowser(url : string){
-    let target = "_blank";
-    this.theInAppBrowser.create(url,target,this.options);
-}
-public openWithCordovaBrowser(url : string){
-    let target = "_self";
-    this.theInAppBrowser.create(url,target,this.options);
-}  */
-  showAlertNoConnexion() {
+showAlertNoConnexion(message:any) {
     let alert = this.alertCtrl.create({
       title: 'Information!',
-      subTitle: 'Vérifiez votre connexion internet!',
+      subTitle: message,
       buttons: ['OK']
     });
     alert.present();
@@ -88,10 +78,9 @@ public openWithCordovaBrowser(url : string){
   }
   
   public showing = true;
-  
   laodDocumentBudget(){
-    this.http.get("http://websitedemo.biz/hbws/api/document.php")//
-    //this.http.get("http://127.0.0.1/dashboard/api/document.php")
+    //this.http.get("http://websitedemo.biz/hbws/api/document.php")//
+    this.http.get("http://bidjepeyidayiti.ht/admin/api/document.php")
  
     .map(res=>res.json())
     .subscribe(res=>{
@@ -102,13 +91,28 @@ public openWithCordovaBrowser(url : string){
         myTable.push(res);
         this.documentBudget=myTable;
       */
+  
       console.log(this.documentBudget);
       this.hideLoad()
       this.showing = !this.showing;
+      this.nativeStorage.setItem("haitiBudgetLocal_db_doc", res);
+
     },(err) =>{
       console.log(err);
-      // alert(err)
-      this.showAlertNoConnexion();
+      console.log(this.nativeStorage.getItem("haitiBudgetLocal_db_doc"))
+  
+      this.nativeStorage.getItem('haitiBudgetLocal_db_doc').then((resDoc) => {
+        if(resDoc != null)
+        {
+          //this.showAlertNoConnexion("C'est données sont en caches");
+          this.documentBudget=resDoc;
+          this.showing = !this.showing;
+        }
+        else
+        {
+          this.showAlertNoConnexion("Verifiez votre connexion internet" );
+        }
+      });
     });
   }
 

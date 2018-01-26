@@ -53,7 +53,7 @@ export class AboutPage {
          console.log("Success");
       },
       ()=>{
-         alert("failed")
+     
       })
  
   }
