@@ -32,7 +32,8 @@
               {{article.titre}}
           </ion-card-title>
           <p>
-              {{article.description |slice:0:310}}...
+      
+            {{article.description | stripHtml | slice:0:310}} 
           </p>
         </ion-card-content> 
     </ion-card>

@@ -42,7 +42,7 @@ import { ChoicePage } from '../pages/choice/choice';
 import { NativeStorage } from '@ionic-native/native-storage';
 
 import { SQLite } from '@ionic-native/sqlite';
-
+import { StripHtmlPipe } from '../pipes/strip-html/strip-html';
 
 @NgModule({
   declarations: [
@@ -64,6 +64,7 @@ import { SQLite } from '@ionic-native/sqlite';
     entiteBySecteur,
     budgetApercu,
     ChoicePage,    
+    StripHtmlPipe,
   ],
   imports: [
    
@@ -75,6 +76,9 @@ import { SQLite } from '@ionic-native/sqlite';
       name: '__mydb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
     })
+  ],
+  exports: [
+    StripHtmlPipe
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -96,8 +100,6 @@ import { SQLite } from '@ionic-native/sqlite';
     entiteBySecteur,
     budgetApercu,
     ChoicePage,
-    
-    
   ],
   providers: [
     StatusBar,

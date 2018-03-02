@@ -14,7 +14,8 @@
         {{detailsArticles.titre}}
         </ion-card-title>
       <p>
-        {{detailsArticles.description}}
+       
+        {{article.description | stripHtml | slice:0:310}} 
       </p>
     </ion-card-content>
     </ion-card>
