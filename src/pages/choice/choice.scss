@@ -1,4 +1,5 @@
 page-choice {
+ 
     .contentSpinner{
         align-content: center;
         text-align: center;
@@ -12,6 +13,7 @@ page-choice {
     }
     
     ion-spinner * {
+        margin-top: 300px;
         width: 48px;
         height: 48px;
         ion-spinner * {

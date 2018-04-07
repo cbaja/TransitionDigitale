@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController,LoadingController ,AlertController} from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
+
+
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -27,7 +29,7 @@ export class ChoicePage {
     private nativeStorage: NativeStorage,
 
     public sqlite: SQLite) {
-    this.laodBudget(); 
+     this.laodBudget(); 
 
   }
 
@@ -100,53 +102,56 @@ export class ChoicePage {
 
   public showing = true;
   laodBudget(){
-  //this.http.get("http://websitedemo.biz/hbws/api/budget.php")
-  this.http.get("http://bidjepeyidayiti.ht/admin/api/budget.php")
 
+  this.http.get("http://bidjepeyidayiti.ht/admin/api/budget.php")
     .map(res=>res.json()) 
     .subscribe(res=>{
       this.budget=res;
       this.hideLoad();
       this.showing = !this.showing;
       this.nativeStorage.setItem("haitiBudgetLocal_db_choice", res);
-    
+      this.goToPages()
+
     },(err) =>{
-     
+      this.goToPages();
       console.log(err);
-      
-      console.log(this.nativeStorage.getItem("haitiBudgetLocal_db_choice"))
   
+      console.log(this.nativeStorage.getItem("haitiBudgetLocal_db_choice"))
       this.nativeStorage.getItem('haitiBudgetLocal_db_choice').then((res) => {
         if(res != null)
         {
           // this.showAlertNoConnexion("C'est données sont en caches");
           this.budget=res;
+          this.goToPages();
           this.showing = !this.showing;
         }
         else
         {
           this.showAlertNoConnexion("Verifiez votre connexion internet" );
+        
         }
       });
-      
     });
-    
-
   }
 
-  goToPages(choiceTake){
-    this.navCtrl.push(TabsPage,{
-      choiceTake:choiceTake
-   });
+  goToPages(){
+    var arr = [];
+    arr = this.budget;
+    var  choiceTake = 1;
+      for(var i=0; i<arr.length; i++){
+      choiceTake = this.budget[i].id_budget
+      this.navCtrl.push(TabsPage,{
+        choiceTake:choiceTake
+    });
+    }
   }
 
   doRefresh(refresher) {
     this.laodBudget();
-
+    
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
     }, 2000);
   }
-  
 }

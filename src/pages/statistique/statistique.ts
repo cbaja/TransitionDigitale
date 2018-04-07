@@ -51,7 +51,6 @@ export class StatistiquePage {
 
   ministere:any;
  
-
   showData() {
     var arrayAcronym = [];
     var seriesJSONArray = [];

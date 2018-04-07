@@ -1,9 +1,10 @@
-<ion-header no-border>
-    <ion-navbar color="primary">
-      <ion-title>Documentations</ion-title>
-    </ion-navbar>
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Documentations
+    </ion-title>
+  </ion-navbar>
 </ion-header>
-
 <ion-content>
     <div class="content_contact">
         <table>
@@ -40,6 +41,8 @@
             <img src="assets/images/pdf.png"/>
           </ion-avatar>
           <h2> {{doc.lefichier |slice:0:120 }} </h2>
+          
+          <p> {{doc.description |slice:0:120 }} </p>
           <p>  
               <a href="http://websitedemo.biz/hbws/img/uploads/{{doc.lien}}">
                 Télécharger

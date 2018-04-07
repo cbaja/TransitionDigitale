@@ -22,9 +22,7 @@ export class DetailsFinancementPage {
     public loadingCtrl: LoadingController,public http: Http,public alertCtrl: AlertController,
     private nativeStorage: NativeStorage,
     public navParams:NavParams) {
-     
       this.financePass=navParams.get("choiceSources");
-     
       if(this.financePass==null){
         this.laodDetailsFinancement(1);
       }else{

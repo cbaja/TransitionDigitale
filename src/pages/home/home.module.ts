@@ -1,13 +1,13 @@
+import { NgModule } from '@angular/core';
+import { IonicPageModule } from 'ionic-angular';
+import { StripHtmlPipe } from '../../pipes/strip-html/strip-html';
 
-import { Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({
-  name: 'stripHtml',
+@NgModule({
+  declarations: [
+    StripHtmlPipe,
+  ],
+  imports: [
+    IonicPageModule.forChild(StripHtmlPipe),
+  ],
 })
-export class StripHtmlPipe implements  PipeTransform {
-
-  transform(value) {
-    let striped = value.replace(/<\/?[^>]+(>|$)/g, "")
-    return striped;
-  }
-}
+export class StripHtmlPipeModule {}

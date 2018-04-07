@@ -25,14 +25,6 @@ export class TabsPage {
 
   constructor(public navCtrl: NavController,public navParams :NavParams) {
     this.choiceBudget=navParams.get("choiceTake");
-    this.idBudget = this.choiceBudget.id_budget; 
-    this.annee = this.choiceBudget.annee; 
-    this.montant = this.choiceBudget.montant; 
-    this.libelleBudget = this.choiceBudget.libelleBudget; 
-    
-    localStorage.budget = this.idBudget;
-    localStorage.annee = this.annee;
-    localStorage.montant = this.montant;
-    localStorage.libelleBudget = this.libelleBudget;
+    localStorage.setItem('budget', this.choiceBudget);
   }
 }

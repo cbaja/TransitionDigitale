@@ -28,7 +28,6 @@ export class MinistereDetailsPage {
     this.loadSousEntite(this.detailsministere.Id_entite);
   }
 
-
   showLoad() {
     const loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -53,12 +52,12 @@ export class MinistereDetailsPage {
       buttons: ['OK']
     });
     alert.present();
-    //this.showLoad();
+    // this.showLoad();
   }
 depense:any;
 // faire une requette 
 loadDepense(id:any){
-  //this.http.get("http://bidjepeyidayiti.ht/admin/fichier.json")
+  // this.http.get("http://bidjepeyidayiti.ht/admin/fichier.json")
   this.http.get("http://websitedemo.biz/hbws/api/depenses.php?entiteAdministratif="+this.detailsministere.Id_entite)
   .map(res=>res.json()) //JSON.parse(data)
   .subscribe(res=>{
@@ -92,7 +91,6 @@ loadDepensinvestIssemente(id:any){
   .map(res=>res.json()) //JSON.parse(data)
   .subscribe(res=>{
     this.investissement=res;
-
     this.nativeStorage.setItem("haitiBudgetLocal_db_invest", res);
     this.hideLoad();
   },(err) =>{
@@ -114,7 +112,6 @@ loadDepensinvestIssemente(id:any){
 sousEntite: any;
 
 loadSousEntite(id:any){
-
   // this.http.get("http://bidjepeyidayiti.ht/admin/fichier.json")
   this.http.get("http://websitedemo.biz/hbws/api/sous_entiteAdministrative.php?entiteAdministratif="+this.detailsministere.Id_entite)
   // this.http.get("http://websitedemo.biz/hbws/api/investissement.php?entiteAdministratif="+this.detailsministere.Id_entite)

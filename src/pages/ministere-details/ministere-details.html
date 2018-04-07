@@ -57,10 +57,12 @@
           
             <ion-list>
                 <div class="titreListe" padding> Crédit d'investissement </div>
+              
                 <ion-item *ngFor="let inves of investissement">
-                    <h2> {{inves.libele_investissement}}</h2>
+                    <h4> {{inves.libele_investissement}}</h4>
                     <p>  {{inves.montant_investissement | number:'4.2-2'}} Gdes </p>
                 </ion-item>
+             
             </ion-list>
           
         </ion-list>

@@ -5,8 +5,6 @@ import { MinistereDetailsPage } from '../ministere-details/ministere-details';
 import { TerritoirePage } from '../territoire/territoire';
 import { ProjetPage } from '../projet/projet';
 import { SecteurPage } from '../secteur/secteur';
-import { ChoicePage } from '../choice/choice';
-
 import { SourcesFinancementPage } from '../sources-financement/sources-financement';
 //import { budgetApercu } from '../budgetApercu/budgetApercu';
 
@@ -15,6 +13,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { SearchPage } from '../search/search';
 
 
 @Component({
@@ -61,6 +60,7 @@ export class ContactPage {
   }
 
   public showing = true;
+  
 
   //http://haitibudget-env-1.max9ppfxgt.us-east-2.elasticbeanstalk.com/getAllEntiteAdministrativeWithDepense
   laodBudget(){
@@ -114,15 +114,6 @@ export class ContactPage {
       title: 'Visualiser le budget par ',
       
       buttons: [
-       /*
-        {
-          text: 'Aperçu sur le budget',
-          // role: 'Secteur',
-          handler: () => {
-             this.navCtrl.push(budgetApercu);
-          }
-        },
-      */
         {
           text: 'Sources de financement',
           // role: 'Secteur',
@@ -133,7 +124,7 @@ export class ContactPage {
 
         {
           text: 'Liste de projet',
-         // role: 'Secteur',
+          // role: 'Secteur',
           handler: () => {
              this.navCtrl.push(ProjetPage);
           }
@@ -152,7 +143,7 @@ export class ContactPage {
         {
           text: 'Choississez un autre budget',
           handler: () => {
-            this.navCtrl.push(ChoicePage);
+            this.navCtrl.push(SearchPage);
           }
         },
         {
