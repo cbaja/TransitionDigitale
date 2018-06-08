@@ -98,11 +98,11 @@ export class SearchPage {
     }
 
     goToPages(id_choice){
+        localStorage.setItem('budget', id_choice.id_budget);
         this.navCtrl.push(TabsPage,{
           id_choice:id_choice.id_budget
       }); 
       
-      localStorage.setItem('budget', id_choice.id_budget);
     }
 
   doRefresh(refresher) {

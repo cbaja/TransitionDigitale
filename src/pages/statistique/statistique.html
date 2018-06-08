@@ -4,30 +4,32 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-<ion-navbar color="primary">
-  <ion-title> Représentation graphique du budget </ion-title>
-</ion-navbar>
-
+  <ion-navbar color="primary">
+    <ion-title> Représentation graphique du budget </ion-title>
+  </ion-navbar>
 </ion-header>
-<ion-content >
 
-<div class="content_contact">
-    <table>
-      <tr>
-        <td>
-            <div class="images">
-              <img src="assets/images/grap.png"/>
-            </div>
-         </td>
-        <td> 
-          <div class="textImages"> 
-            Représentation graphique du budget par entité de l’état.
-          </div> 
-        </td>
-      </tr>
-    </table>    
-  </div>
+<ion-content >
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    
+  <div class="content_contact">
+      <table>
+        <tr>
+          <td>
+              <div class="images">
+                <img src="assets/images/grap.png"/>
+              </div>
+          </td>
+          <td> 
+            <div class="textImages"> 
+              Représentation graphique du budget par entité de l’état.
+            </div> 
+          </td>
+        </tr>
+      </table>    
+    </div>
   <!--
   <div class="content_tableau">
     <div class="images">
@@ -36,5 +38,171 @@
   </div> -->    
   <chart [options]="chartOptions"  style="display:block" type="chart">
   </chart>
+<!--
+  <div class="inside-banner">
+    <div class="transparent">
+      <div class="container">
+        <h2>
+          <span>Tableau de bord</span>
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div style="background:#f2f2f2; padding:35px 0;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div style="background:#fff; border:1px solid #eee; border-radius:10px; padding:20px;">
+            <h3>Tableau de bord</h3>
+            <hr style="margin: 0 0 40px 0;" />
+            <div class="row">
+              <div class="col-md-6" style="border-right:1px solid #ccc;">
+                <h4 class="text-center">Recettes fiscales collectées durant le premier trimestre
+                  <br> Exercice fiscal 2017-2018
+                </h4>
+                <div id="chart-recette-collectees" style="width: 100%; height: 320px;"></div>
+                <div class="text-right">en millions HTG</div>
+                <p style="font-size: 0.9em;font-style: italic;margin-top: 15px;">
+                  Comparaison entre les recettes fiscales collectées au cours du premier trimestre et les prévisions des recettes fiscales
+                  pour l’exercice fiscal 2017-2018.
+                </p>
+                <p class="text-center" style="font-size: 0.9em;">
+                  Source: Ministère de l'Économie et des Finances (MEF)
+                </p>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-center">Dépenses effectuées durant le premier trimestre
+                  <br> Exercice fiscal 2017-2018
+                </h4>
+                <div id="chart-depenses-effectuees" style="width: 100%; height: 320px;"></div>
+                <div class="text-right">en millions HTG</div>
+                <p style="font-size: 0.9em;font-style: italic;margin-top: 15px;">
+                  Comparaison entre les dépenses effectuées au cours du premier trimestre et les prévisions des dépenses pour l’exercice fiscal
+                  2017-2018.
+                </p>
+                <p class="text-center" style="font-size: 0.9em;">
+                  Source: Ministère de l'Économie et des Finances (MEF)
+                </p>
+              </div>
+            </div>
+            <hr style="margin: 40px 0;" />
+            <div class="row">
+              <div class="col-md-6" style="border-right:1px solid #ccc;">
+                <h4 class="text-center">Dépenses courrantes effectuées durant le premier trimestre
+                  <br> Exercice fiscal 2017-2018
+                </h4>
+                <div id="chart-depenses-courrantes-effectuees" style="width: 100%; height: 320px;"></div>
+                <div class="text-right">en millions HTG</div>
+                <p style="font-size: 0.9em;font-style: italic;margin-top: 15px;">
+                  Comparaison entre les dépenses courantes effectuées au cours du premier trimestre et les prévisions des dépenses courantes
+                  pour l’exercice fiscal 2017-2018.
+                </p>
+                <p class="text-center" style="font-size: 0.9em;">Source: Ministère de l'Économie et des Finances (MEF)</p>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-center">Montant de financement collecté pour le premier trimestre
+                  <br> Exercice fiscal 2017-2018
+                </h4>
+                <div id="chart-financement-collectees" style="width: 100%; height: 320px;"></div>
+                <div class="text-right">en millions HTG</div>
+                <p style="font-size: 0.9em;font-style: italic;margin-top: 15px;">
+                  Comparaison entre le montant de financement effectif au cours du premier trimestre et les prévisions de financement pour
+                  l’exercice fiscal 2017-2018.
+                </p>
+                <p class="text-center"  style="font-size: 0.9em;">
+                  Source: Ministère de l'Économie et des Finances (MEF)
+              </p>
+              </div>
+            </div>
+            <hr style="margin: 40px 0;">
+            <div class="row">
+              <div class="col-md-6" style="border-right:1px solid #ccc;">
+                <h4 class="text-center">Prévision des recettes 2017-2018
+                </h4>
+                <div id="chart-prevision-recettes" style="width: 100%; height: 370px;"></div>
+                <div class="text-right">en milliards HTG</div>
+                <p style="font-size: 0.9em;font-style: italic;margin-top: 15px;">
+                  Sources de collecte de ressource pour le budget de l'exercice fiscal 2017-2018: recettes fiscales, non fiscales, dons, etc…
+                </p>
+                <p class="text-center"  style="font-size: 0.9em;">
+                  Source: Ministère de l'Économie et des Finances (MEF)
+              </p>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-center">Prévision des dépenses 2017-2018</h4>
+                <div id="chart-prevision-depenses" style="width: 100%; height: 370px;"></div>
+                <div class="text-right">en milliards HTG</div>
+                <p style="font-size: 0.9em;font-style: italic;margin-top: 15px;">
+                  Dépenses totales prévues pour l'année fiscale 2017-2018: dépenses courantes, dépenses de capital, amortissement, etc…
+                </p>
+                <p class="text-center"  style="font-size: 0.9em;">
+                  Source: Ministère de l'Économie et des Finances (MEF)
+              </p>
+              </div>
+            </div>
+            <hr style="margin: 40px 0;">
+            <div class="row">
+              <div class="col-md-6" style="border-right:1px solid #ccc;">
+                <h4 class="text-center">Taux de change
+                  <br> ( gourdes pour une unité étrangère)
+                </h4>
+                <table style="width:100%;background: #d9e2f3;">
+                  <tr>
+                    <td colspan="3" class="text-center" style="border: 1px solid #fff;padding:10px;">
+                      <strong>Taux de change</strong>( gourdes pour une unité étrangère)</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #fff;padding:10px;"></td>
+                    <td style="border: 1px solid #fff;padding:10px;" colspan="2" class="text-center">
+                      <strong>Mars 2018</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #fff;padding:10px;"></td>
+                    <td style="border: 1px solid #fff;padding:10px;">Achat</td>
+                    <td style="border: 1px solid #fff;padding:10px;">Vente</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #fff;padding:10px;">Dollar EU</td>
+                    <td style="border: 1px solid #fff;padding:10px;">65,1985</td>
+                    <td style="border: 1px solid #fff;padding:10px;">66,2127</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #fff;padding:10px;">Euro</td>
+                    <td style="border: 1px solid #fff;padding:10px;">80,6268</td>
+                    <td style="border: 1px solid #fff;padding:10px;">81,7576</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #fff;padding:10px;">Peso dom.</td>
+                    <td style="border: 1px solid #fff;padding:10px;">1,3214</td>
+                    <td style="border: 1px solid #fff;padding:10px;">1,3399</td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #fff;padding:10px;">Dollar can.</td>
+                    <td style="border: 1px solid #fff;padding:10px;">50,6236</td>
+                    <td style="border: 1px solid #fff;padding:10px;">51,3336</td>
+                  </tr>
+                </table>
+                <p class="text-center"  style="font-size: 0.9em;">
+                  Source: Banque de la République d'Haïti (BRH)
+              </p>
+              </div>
+              <div class="col-md-6">
+                <h4 class="text-center">Inflation
+                  <br> en glissement annuel (en %)
+                </h4>
+                <canvas id="chart-inflation"></canvas>
+                <p class="text-center"  style="font-size: 0.9em;">
+                  Source: Banque de la République d'Haïti (BRH)
+              </p>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
 </ion-content>
 

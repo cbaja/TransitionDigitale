@@ -23,8 +23,8 @@ declare var AmCharts: any;
 })
 export class TerritoirePage {
   //private chart: AmChart;
-  budget: any = localStorage.getItem("budget") 
-  
+  budget: any ;
+
   options : InAppBrowserOptions = {
     location : 'yes',//Or 'no' 
     hidden : 'no', //Or  'yes'
@@ -49,8 +49,10 @@ export class TerritoirePage {
     public http:Http, public alertCtrl: AlertController, public loadingCtrl: LoadingController,
     private nativeStorage: NativeStorage,
     private theInAppBrowser: InAppBrowser) {
+      this.budget = localStorage.getItem("budget");
       this.loadBudgetDepartement();
       this.loadBudgetDepartementMap();
+    
   }
  onViewLoad(){
   this.showLoad()
@@ -120,6 +122,7 @@ export class TerritoirePage {
   public showing = true; 
   
   loadBudgetDepartement(){
+    this.budget = localStorage.getItem("budget");
     this.http.get("http://bidjepeyidayiti.ht/admin/api/cartographieBudget.php?budget="+this.budget)
     .map(res=>res.json()) //JSON.parse(data)
     .subscribe(res=>{
@@ -127,15 +130,14 @@ export class TerritoirePage {
       console.log(this.departement);
       this.hideLoad();
       this.nativeStorage.setItem("haitiBudgetLocal_db_territoire", res);
-      this.showing = !this.showing;
+      this.showing = false;
     },(err) =>{
- 
+      this.showing = false;
       this.nativeStorage.getItem('haitiBudgetLocal_db_territoire').then((resdepartement) => {
         if(resdepartement != null)
         {
          // this.showAlertNoConnexion("C'est données sont en caches");
-          this.departement=resdepartement;
-          this.showing = !this.showing;
+         this.showing = false;
         }
         else
         {
@@ -146,6 +148,7 @@ export class TerritoirePage {
   }
   
   loadBudgetDepartementMap(){
+    
     this.http.get("http://www.bidjepeyidayiti.ht/admin/api/v2/getHaitiMapData/index.php")
     .map(res=>res.json())
     .subscribe(res=>{
@@ -200,7 +203,9 @@ export class TerritoirePage {
       projetdepartement:projetdepartement
      });
   }
+  /*
   test(a){
     alert(a)
   }
+  */
 }

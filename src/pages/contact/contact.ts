@@ -64,6 +64,7 @@ export class ContactPage {
 
   //http://haitibudget-env-1.max9ppfxgt.us-east-2.elasticbeanstalk.com/getAllEntiteAdministrativeWithDepense
   laodBudget(){
+    this.budget = localStorage.getItem("budget");
     this.http.get("http://bidjepeyidayiti.ht/admin/api/entiteAdministrative.php?budget="+this.budget)
     //this.http.get("http://websitedemo.biz/hbws/api/entiteAdministrative.php")
     .map(res=>res.json()) //JSON.parse(data)

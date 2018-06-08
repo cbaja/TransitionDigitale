@@ -24,7 +24,13 @@ export class TabsPage {
   libelleBudget: any;
 
   constructor(public navCtrl: NavController,public navParams :NavParams) {
-    this.choiceBudget=navParams.get("choiceTake");
-    localStorage.setItem('budget', this.choiceBudget);
+     this.choiceBudget = navParams.get("id_choice");
+ 
+     if(this.choiceBudget===undefined){
+
+     }else{
+      localStorage.setItem('budget', this.choiceBudget);
+     }
+    
   }
 }

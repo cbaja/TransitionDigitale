@@ -22,14 +22,15 @@ export class ChoicePage {
   budget:any = []
   public db:SQLiteObject;
 
-  constructor(public navCtrl: NavController,public loadingCtrl: LoadingController,
+  constructor(public navCtrl: NavController,
+    public loadingCtrl: LoadingController,
     public modalCtrl: ModalController,
     public http: Http,
     public alertCtrl: AlertController,
     private nativeStorage: NativeStorage,
 
     public sqlite: SQLite) {
-     this.laodBudget(); 
+    this.laodBudget(); 
 
   }
 
@@ -103,6 +104,7 @@ export class ChoicePage {
   public showing = true;
   laodBudget(){
 
+
   this.http.get("http://bidjepeyidayiti.ht/admin/api/budget.php")
     .map(res=>res.json()) 
     .subscribe(res=>{
@@ -113,7 +115,7 @@ export class ChoicePage {
       this.goToPages()
 
     },(err) =>{
-      this.goToPages();
+      
       console.log(err);
   
       console.log(this.nativeStorage.getItem("haitiBudgetLocal_db_choice"))
@@ -124,31 +126,32 @@ export class ChoicePage {
           this.budget=res;
           this.goToPages();
           this.showing = !this.showing;
+          this.goToPages();
         }
         else
         {
           this.showAlertNoConnexion("Verifiez votre connexion internet" );
-        
         }
       });
     });
+    
   }
 
   goToPages(){
     var arr = [];
     arr = this.budget;
-    var  choiceTake = 1;
-      for(var i=0; i<arr.length; i++){
-      choiceTake = this.budget[i].id_budget
-      this.navCtrl.push(TabsPage,{
-        choiceTake:choiceTake
-    });
+    var  choiceTake;
+      for(var i=0; i< arr.length; i++){
+        choiceTake = this.budget[i].id_budget
+        localStorage.setItem('budget', choiceTake);
+        this.navCtrl.push(TabsPage,{
+          choiceTake:choiceTake
+        });
     }
   }
 
   doRefresh(refresher) {
     this.laodBudget();
-    
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();

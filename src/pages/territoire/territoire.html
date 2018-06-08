@@ -31,17 +31,10 @@
     <div  *ngIf="showing"  class="contentSpinner">    
         <ion-spinner name="bubbles"></ion-spinner>
     </div>
-    <ion-refresher (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content
-                  pullingIcon="arrow-dropdown"
-                  pullingText="Pull to refresh"
-                  refreshingSpinner="circles"
-                  refreshingText="Refreshing...">
-        </ion-refresher-content>
-      </ion-refresher>
+      <!--
       <div id="test">
 
-<svg xmlns:mapsvg="http://mapsvg.com" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" mapsvg:geoViewBox="-74.480910 20.089566 -71.621754 18.020528" width="100%" height="593.52094">
+  <svg xmlns:mapsvg="http://mapsvg.com" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" mapsvg:geoViewBox="-74.480910 20.089566 -71.621754 18.020528" width="100%" height="593.52094">
   
   <path fill="#dbdbda" d="m 565.23995,492.6908 0,0 7.86,-0.61 3.3,4.54 3.75,4.22 22.48,1.36 23.14,-1.45 23.6,4.86 23.47,5.34 22.84,-0.3 18.3,1.42 14.05,8.77 23.76,-4.13 0.25,-0.04 -0.16,0.28 -12.07,20.8 -2.14,5.37 -0.76,5.63 0.41,2.7 2.92,8.19 0.64,3.2 -0.18,4.75 0.6,8.3 -0.98,4.95 -3.25,8.63 -4.44,-3.03 -18.98,-24.76 -8.28,-7.5 -9.54,-6 -21.36,-7.34 -8.84,-4.63 -8.82,-3.4 -10.57,-0.02 -21.68,3.65 -28.25,-0.27 -39.58,0.53 -21.32,3.88 -5.46,-2.88 -3.27,-1.24 -1.45,1.12 1.83,11 -2.56,2.81 -3.18,0.07 -7.41,-2.88 -4.16,-0.75 -31.93,2.94 -6.55,-0.42 0.54,1.32 0.78,3.22 0.53,1.31 -4.03,-0.29 -1.61,-0.44 -1.93,-1.4 -7.51,4.86 -14.98,-1.47 -7.34,2.82 -7.14,-4.14 -9.59,-3.76 -10.28,-2.74 -6.16,-0.69 0.3,-1.4 -0.85,-4.98 -0.65,-5 -0.54,-6.28 -0.02,-6.28 3.48,-8.09 1.08,-8.48 3.91,5.2 3.26,6.28 5.76,-0.78 7.23,-1.6 4.24,0.3 4.01,0.23 3.07,4.5 5.85,2.97 3.07,-3.31 4.59,-2.77 9.22,3.14 8.98,2.27 2.12,-4.02 3.31,-2.61 1.49,-3.57 0.73,-4.11 4.26,2.34 4.72,0.68 2.97,-2.82 3.17,-2.72 5.28,-0.22 5.19,-0.69 3.08,-2.63 3.61,-0.44 6.28,-0.78 6.67,-2.87 3.28,-0.11 2.74,-2.1 6.71,-8.07 9.01,-4.23 9.78,0.62 7.12,3.54 5.18,2.63 z" title="Sud-Est" id="HT-SE" (tap)="test('manmie')"/>
 
@@ -64,12 +57,14 @@
 </svg>
 
 
-      </div>
-      <div id="chartdiv"> 
-      </div>
-      <div class="load">
+</div>
+<div id="chartdiv"> 
 
-      </div>
+</div>
+<div class="load">
+
+</div>
+-->
 
     <ion-list>
         <ion-item *ngFor="let depart of departement" (tap)= "sedprojetbydepatement(depart)">

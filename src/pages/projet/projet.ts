@@ -45,6 +45,7 @@ export class ProjetPage {
   }
 
   laodProjetByName(projetName : any){
+    this.budget = localStorage.getItem("budget");
     this.http.get("http://bidjepeyidayiti.ht/admin/api/findprojet.php?designation="+projetName+"&budget="+this.budget)
     .map(res=>res.json()) 
     .subscribe(res=>{
@@ -97,7 +98,6 @@ export class ProjetPage {
   }
   
   laodProjet(projetDepartement : any){
-   
    this.http.get(" http://bidjepeyidayiti.ht/admin/api/projet.php?id_cartographie="+projetDepartement)
    // this.http.get("http://websitedemo.biz/hbws/api/projet.php?id_cartographie="+projetDepartement)
     .map(res=>res.json()) 
@@ -122,10 +122,9 @@ export class ProjetPage {
   }
 
   laodAllProjet(){
-    
+    this.budget = localStorage.getItem("budget");
     this.http.get("http://bidjepeyidayiti.ht/admin/api/projet.php?budget="+this.budget)
-    //this.http.get("http://websitedemo.biz/hbws/api/projet.php")
-    
+    // this.http.get("http://websitedemo.biz/hbws/api/projet.php")
     .map(res=>res.json()) 
     .subscribe(res=>{
       this.projet=res;  
@@ -133,7 +132,7 @@ export class ProjetPage {
       this.nativeStorage.setItem("haitiBudgetLocal_db_projet", res);
       this.hideLoad();
       this.showing = !this.showing;    
-    },(err) =>{
+    },(err) => {
       this.nativeStorage.getItem('haitiBudgetLocal_db_projet').then((resPro) => {
         if(resPro != null){
           // this.showAlertNoConnexion("C'est données sont en caches");
