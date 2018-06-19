@@ -40,7 +40,6 @@ export class DetailsFinancementPage {
          this.hideLoad();
          this.showing = !this.showing;
          this.nativeStorage.setItem("haitiBudgetLocal_db_projet", res);
-         alert(res);
        },(err) =>{
          console.log(this.nativeStorage.getItem("haitiBudgetLocal_db_projet"))
                this.nativeStorage.getItem('haitiBudgetLocal_db_projet').then((resPro) => {
