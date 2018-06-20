@@ -28,13 +28,16 @@
       <ion-card *ngFor="let article of articles" (tap)="goToDetails(article)">
          <img src="{{article.photoUrl}}"/>
         <ion-card-content>
-          <ion-card-title>
+            <ion-card-title>
               {{article.titre}}
-          </ion-card-title>
-          <p>
+            </ion-card-title>
+              <iframe srcdoc = " {{article.description | stripHtml | slice:0:310}} " height="160px" width="100%" name="iframe_a">
+                </iframe>
+
+          <!-- <p>
       
             {{article.description | stripHtml | slice:0:310}} 
-          </p>
+          </p> -->
         </ion-card-content> 
     </ion-card>
 </ion-content>

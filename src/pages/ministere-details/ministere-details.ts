@@ -58,7 +58,7 @@ depense:any;
 // faire une requette 
 loadDepense(id:any){
   // this.http.get("http://bidjepeyidayiti.ht/admin/fichier.json")
-  this.http.get("http://websitedemo.biz/hbws/api/depenses.php?entiteAdministratif="+this.detailsministere.Id_entite)
+  this.http.get("http://bidjepeyidayiti.ht/admin/api/depenses.php?entiteAdministratif="+this.detailsministere.Id_entite)
   .map(res=>res.json()) //JSON.parse(data)
   .subscribe(res=>{
     this.depense=res;
@@ -87,7 +87,7 @@ investissement:any;
 // faire une requette 
 loadDepensinvestIssemente(id:any){
   //this.http.get("http://bidjepeyidayiti.ht/admin/fichier.json")
-  this.http.get("http://websitedemo.biz/hbws/api/investissement.php?entiteAdministratif="+this.detailsministere.Id_entite)
+  this.http.get("http://bidjepeyidayiti.ht/admin/api/investissement.php?entiteAdministratif="+this.detailsministere.Id_entite)
   .map(res=>res.json()) //JSON.parse(data)
   .subscribe(res=>{
     this.investissement=res;
@@ -113,7 +113,7 @@ sousEntite: any;
 
 loadSousEntite(id:any){
   // this.http.get("http://bidjepeyidayiti.ht/admin/fichier.json")
-  this.http.get("http://websitedemo.biz/hbws/api/sous_entiteAdministrative.php?entiteAdministratif="+this.detailsministere.Id_entite)
+  this.http.get("http://bidjepeyidayiti.ht/admin/api/sous_entiteAdministrative.php?entiteAdministratif="+this.detailsministere.Id_entite)
   // this.http.get("http://websitedemo.biz/hbws/api/investissement.php?entiteAdministratif="+this.detailsministere.Id_entite)
   .map(res=>res.json()) //JSON.parse(data)
   .subscribe(res=>{

@@ -7,7 +7,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+    <img src="{{detailsArticles.photoUrl}}"/>
+    <iframe srcdoc = "{{detailsArticles.description}}" height="100%" width="100%" name="iframe_a">
+    </iframe>
+    <!--
+    <ion-card>
     <img src="{{detailsArticles.photoUrl}}"/>
     <ion-card-content>
       <ion-card-title>
@@ -17,7 +21,7 @@
           {{detailsArticles.description | stripHtml}}
       </p>
     </ion-card-content>
-    </ion-card>
+    </ion-card> -->
     <ion-fab bottom right padding >
         <button ion-fab>
           <ion-icon name="share" >
