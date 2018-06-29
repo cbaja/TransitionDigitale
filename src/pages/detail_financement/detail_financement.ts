@@ -35,8 +35,8 @@ export class DetailsFinancementPage {
       this.http.get("http://bidjepeyidayiti.ht/admin/api/datail_souces.php?idFinance="+idFin)
        .map(res=>res.json()) 
        .subscribe(res=>{
-         this.detail_finance=res;  
-         console.log(this.detail_finance);
+         this.detail_finance = res;  
+         console.log("deletails ", this.detail_finance);
          this.hideLoad();
          this.showing = !this.showing;
          this.nativeStorage.setItem("haitiBudgetLocal_db_projet", res);

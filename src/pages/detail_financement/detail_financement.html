@@ -26,16 +26,15 @@
   </div>
 
   <ion-list>
-    <ion-item *ngFor="let detail_finance of det">
+    <ion-item *ngFor="let det of  detail_finance">
       <ion-avatar item-left>
           <img src="assets/images/mi/amoirie.jpg"/>
       </ion-avatar>
       <h2>
           {{det.libelle_details}}
       </h2>
-      
       <b>
-          {{det.montant | number:'4.2-2'}} Gourdes
+          {{det.montant | number:'4.2-2'}} Gdes
       </b>
     </ion-item> 
   </ion-list>
